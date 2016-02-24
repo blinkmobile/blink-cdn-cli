@@ -11,7 +11,9 @@ const help = require('./lib/help.js');
 
 // this module
 
-const commands = {};
+const commands = {
+  scope: require('./commands/scope.js')
+};
 
 updateNotifier({ pkg }).notify();
 
