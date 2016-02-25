@@ -28,7 +28,7 @@ test.serial('it should return the currently set scope', t => {
 
   const scope = require(scopeModule);
 
-  return scope.read().then(s => t.same(s, expectedScope));
+  return scope.read().then(s => t.same(s.scope, expectedScope));
 });
 
 test.serial('it should handle an unitinitalised config file', t => {
@@ -40,7 +40,7 @@ test.serial('it should handle an unitinitalised config file', t => {
   mockery.registerMock(configHelperModule, configHelperMock);
 
   const scope = require(scopeModule);
-  return scope.read().then(s => t.same(s, expectedScope));
+  return scope.read().then(s => t.same(s.scope, expectedScope));
 });
 
 test.serial('it should reject if no scope is set', t => {

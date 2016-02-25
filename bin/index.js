@@ -16,7 +16,8 @@ const cli = meow({
   help,
   version: true
 }, {
-  boolean: [ 'prune' ]
+  boolean: [ 'prune' ],
+  string: ['bucket', 'region']
 });
 
 main(cli.input, cli.flags);
