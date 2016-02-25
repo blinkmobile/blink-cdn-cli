@@ -25,14 +25,12 @@ test('it should have the bucket name pre-configured', t => {
   };
 
   const s3BucketParamsMock = {
-    read: () => params
+    read: () => Promise.resolve(params)
   };
 
   mockery.warnOnUnregistered(false);
   mockery.registerMock(s3BucketParamsModule, s3BucketParamsMock);
 
   const s3Factory = require('../lib/s3-bucket-factory.js');
-  const s3 = s3Factory();
-
-  return t.ok(s3.config.params.Bucket);
+  return s3Factory().then(s3 => t.ok(s3.config.params.Bucket));
 });
