@@ -22,6 +22,7 @@ test.serial('it should return the stored params', t => {
   const config = {
     cdn: {
       scope: 'a',
+      region: 'b',
       objectParams: {
         Expires: 60,
         ACL: 'public-read'
@@ -29,9 +30,12 @@ test.serial('it should return the stored params', t => {
     }
   };
   const expectedConfig = {
-    Bucket: 'a',
-    Expires: 60,
-    ACL: 'public-read'
+    region: 'b',
+    params: {
+      Bucket: 'a',
+      Expires: 60,
+      ACL: 'public-read'
+    }
   };
 
   const configHelperMock = {
