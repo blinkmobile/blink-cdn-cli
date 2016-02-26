@@ -1,7 +1,7 @@
 {
-  "name": "bmp-cdn-cli",
+  "name": "@blinkmobile/cdn-cli",
   "version": "0.0.1",
-  "description": "Cli utility for BlinkMobile's Mobility Platform CDN",
+  "description": "CLI utility for BlinkMobile's Mobility Platform CDN",
   "main": "index.js",
   "bin": {
     "blinkm-cli": "./bin/index.js"
@@ -49,7 +49,6 @@
     "meow": "^3.7.0",
     "pify": "^2.3.0",
     "prompt-input": "0.0.1",
-    "then-yield": "0.0.1",
     "update-notifier": "^0.6.0"
   }
 }

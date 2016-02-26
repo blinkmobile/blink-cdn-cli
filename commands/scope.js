@@ -1,6 +1,6 @@
 'use strict';
 
-const scope = require('../lib/scope.js');
+const scope = require('../lib/scope');
 const prompt = require('prompt-input')();
 
 function write (bucketName) {
@@ -26,6 +26,6 @@ module.exports = function (input, flags, options) {
     .catch(() => {
       console.log('s3 Bucket scope has not been set yet.');
       prompt('s3 Bucket Name: (ctrl-c to quit)',
-        bucket => write(bucket.replace(/[\r\n]/, '')).then(s => showScope(s.cdn.scope)));
+        bucket => write(bucket.trim()).then(s => showScope(s.cdn.scope)));
     });
 };

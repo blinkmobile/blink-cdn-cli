@@ -8,7 +8,7 @@ const meow = require('meow');
 // local modules
 
 const main = require('..');
-const help = require('../lib/help.js');
+const help = require('../lib/help');
 
 // this module
 

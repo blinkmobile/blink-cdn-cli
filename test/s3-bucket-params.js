@@ -3,8 +3,8 @@
 const test = require('ava');
 const mockery = require('mockery');
 
-const configHelperModule = './utils/config-helper.js';
-const s3BucketParamsModule = '../lib/s3-bucket-params.js';
+const configHelperModule = './utils/config-helper';
+const s3BucketParamsModule = '../lib/s3-bucket-params';
 
 test.beforeEach(() => {
   mockery.enable({ useCleanCache: true });

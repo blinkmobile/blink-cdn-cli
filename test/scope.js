@@ -3,8 +3,8 @@
 const test = require('ava');
 const mockery = require('mockery');
 
-const configHelperModule = './utils/config-helper.js';
-const scopeModule = '../lib/scope.js';
+const configHelperModule = './utils/config-helper';
+const scopeModule = '../lib/scope';
 
 test.beforeEach(() => {
   mockery.enable({ useCleanCache: true });
