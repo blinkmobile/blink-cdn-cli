@@ -19,9 +19,12 @@ test.afterEach(() => {
 
 test('it should have the bucket name pre-configured', t => {
   const params = {
-    Bucket: 'a',
-    Expires: 60,
-    ACL: 'public-read'
+    region: 'region',
+    params: {
+      Bucket: 'a',
+      Expires: 60,
+      ACL: 'public-read'
+    }
   };
 
   const s3BucketParamsMock = {

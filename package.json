@@ -47,8 +47,6 @@
     "@blinkmobile/blinkmrc": "^1.1.0",
     "aws-sdk": "^2.2.36",
     "meow": "^3.7.0",
-    "pify": "^2.3.0",
-    "prompt-input": "0.0.1",
     "update-notifier": "^0.6.0"
   }
 }
