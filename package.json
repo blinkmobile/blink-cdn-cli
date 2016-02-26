@@ -47,6 +47,7 @@
     "@blinkmobile/blinkmrc": "^1.1.0",
     "aws-sdk": "^2.2.36",
     "meow": "^3.7.0",
+    "object-merge": "^2.5.1",
     "update-notifier": "^0.6.0"
   }
 }
