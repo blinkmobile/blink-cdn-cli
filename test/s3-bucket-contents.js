@@ -32,8 +32,8 @@ test.serial('it should reject if there is an error with s3', t => {
 
 test.serial('it should resolve with an array', t => {
   const response = {
-    Contents: [{Key: 'test/1.js', LastModified:'Fri Feb 26 2016 16:24:07 GMT+1100 (AUS Eastern Daylight Time)'}]
-  }
+    Contents: [{Key: 'test/1.js', LastModified: 'Fri Feb 26 2016 16:24:07 GMT+1100 (AUS Eastern Daylight Time)'}]
+  };
   const s3FactoryMock = () => Promise.resolve({
     listObjects: (d, cb) => cb(null, response)
   });
@@ -46,5 +46,4 @@ test.serial('it should resolve with an array', t => {
   return s3BucketContents().then(result => {
     t.same(result.length, 1);
   });
-  
 });

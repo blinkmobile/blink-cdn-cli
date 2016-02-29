@@ -42,7 +42,7 @@ test('it should accept all files for upload', t => {
   const filesToUpload = ['www/1.js', 'www/2.js', 'www/3.js', 'www/4.js'];
   const fileFilter = require(fileFilterModule)(s3Files);
   const results = filesToUpload.filter(fileFilter);
-  
+
   t.is(results.length, filesToUpload.length);
   t.same(results, filesToUpload);
 });
@@ -62,11 +62,10 @@ test('it should return 1 file for upload', t => {
   const filesToUpload = ['www/1.js', 'www/2.js', 'www/3.js', 'www/4.js'];
   const fileFilter = require(fileFilterModule)(s3Files);
   const results = filesToUpload.filter(fileFilter);
-  
+
   t.is(results.length, 1);
   t.same(results[0], filesToUpload[0]);
 });
-
 
 test('it should return 0 files for upload', t => {
   const fileStatsMock = {
@@ -83,7 +82,7 @@ test('it should return 0 files for upload', t => {
   const filesToUpload = ['www/1.js', 'www/2.js', 'www/3.js', 'www/4.js'];
   const fileFilter = require(fileFilterModule)(s3Files);
   const results = filesToUpload.filter(fileFilter);
-  
+
   t.is(results.length, 0);
   t.same(results, []);
 });
