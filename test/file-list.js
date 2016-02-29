@@ -38,7 +38,8 @@ test.serial('it should return an array of unix style file paths', t => {
 
   const pathMock = {
     join: dir => dir,
-    normalize: filename => filename
+    normalize: filename => filename,
+    isAbsolute: () => false
   };
 
   mockery.registerMock('fs', fsMock);
