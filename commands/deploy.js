@@ -6,7 +6,7 @@ const fileFilter = require('../lib/file-filter');
 const s3BucketContents = require('../lib/s3-bucket-contents');
 
 function upload (sourceDir) {
-  s3BucketContents().then(contents => {
+  return s3BucketContents().then(contents => {
     let files = fileList(sourceDir);
     let filesToUpload = files.filter(fileFilter(contents));
 
@@ -22,5 +22,5 @@ function upload (sourceDir) {
 
 module.exports = function (input, flags, options) {
   let sourceDir = input[0] || null;
-  upload(sourceDir);
+  return upload(sourceDir);
 };
