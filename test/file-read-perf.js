@@ -6,6 +6,9 @@ const pify = require('pify');
 const test = require('ava');
 const temp = require('temp');
 const mockery = require('mockery');
+// require now to avoid mockery warnings
+require('elegant-spinner');
+require('log-update');
 
 const fileData = 'test contents\n\n';
 const pWriteFile = pify(fs.writeFile);
@@ -58,7 +61,10 @@ mockery.registerAllowables([
   '../commands/deploy',
   '../lib/file-list',
   'fs',
-  'path']);
+  'path',
+  'elegant-spinner',
+  'log-update'
+]);
 
 test.after(() => mockery.disable());
 

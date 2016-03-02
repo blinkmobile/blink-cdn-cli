@@ -1,5 +1,8 @@
 'use strict';
 
+const elegantSpinner = require('elegant-spinner');
+const logUpdate = require('log-update');
+
 const s3Uploader = require('../lib/s3-uploader');
 const fileList = require('../lib/file-list');
 const fileFilter = require('../lib/file-filter');
@@ -21,6 +24,12 @@ function upload (sourceDir) {
 }
 
 module.exports = function (input, flags, options) {
+  const frame = elegantSpinner();
+  let timer = setInterval(() => {
+    logUpdate(frame());
+  }, 100);
+
   let sourceDir = input[0] || null;
-  return upload(sourceDir);
+  return upload(sourceDir)
+    .then(() => clearTimeout(timer));
 };
