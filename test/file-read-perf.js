@@ -7,6 +7,7 @@ const test = require('ava');
 const temp = require('temp');
 const mockery = require('mockery');
 // require now to avoid mockery warnings
+require('@blinkmobile/aws-s3');
 require('elegant-spinner');
 require('log-update');
 
@@ -14,28 +15,16 @@ const fileData = 'test contents\n\n';
 const pWriteFile = pify(fs.writeFile);
 const pMkdir = pify(temp.mkdir);
 
-const s3FactoryModule = './s3-bucket-factory';
-const fileFilterModule = '../lib/file-filter';
-const s3BucketContentsModule = '../lib/s3-bucket-contents';
-const s3UploaderModule = '../lib/s3-uploader';
-
-const fileFilterMock = bucket => file => true;
-const s3BucketContentsMock = () => Promise.resolve([]);
-
 const chainer = {
   on: () => chainer,
   send: () => chainer
 };
 
+const s3FactoryModule = '../lib/s3-bucket-factory';
 const s3BucketFactoryMock = () => Promise.resolve({
-  uploadBatch: params => {
-    return chainer;
-  }
+  listObjects (options, callback) { callback(null, { Contents: [] }); },
+  upload (options, callback) { callback(null); }
 });
-
-const s3UploaderMock = {
-  uploadBatch: () => Promise.resolve()
-};
 
 const makeArray = num => {
   let arr = [];
@@ -53,15 +42,12 @@ const createFile = dir => id => {
 
 temp.track();
 mockery.enable();
-mockery.registerMock(fileFilterModule, fileFilterMock);
 mockery.registerMock(s3FactoryModule, s3BucketFactoryMock);
-mockery.registerMock(s3BucketContentsModule, s3BucketContentsMock);
-mockery.registerMock(s3UploaderModule, s3UploaderMock);
 mockery.registerAllowables([
   '../commands/deploy',
-  '../lib/file-list',
   'fs',
   'path',
+  '@blinkmobile/aws-s3',
   'elegant-spinner',
   'log-update'
 ]);
