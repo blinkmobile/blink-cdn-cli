@@ -30,6 +30,7 @@ test.serial('it should return the stored params', t => {
     }
   };
   const expectedConfig = {
+    computeChecksums: true,
     region: 'b',
     params: {
       Bucket: 'a',
