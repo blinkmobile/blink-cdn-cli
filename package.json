@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:blinkmobile/blink-client-cli.git"
+    "url": "git@github.com:blinkmobile/client-cli.git"
   },
   "keywords": [
     "BlinkMobile",
@@ -33,9 +33,9 @@
   "author": "Simon Dobie",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/blinkmobile/blink-client-cli/issues"
+    "url": "https://github.com/blinkmobile/client-cli/issues"
   },
-  "homepage": "https://github.com/blinkmobile/blink-client-cli#readme",
+  "homepage": "https://github.com/blinkmobile/client-cli#readme",
   "devDependencies": {
     "ava": "^0.12.0",
     "eslint": "^1.10.3",
