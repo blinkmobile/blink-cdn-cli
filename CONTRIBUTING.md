@@ -54,7 +54,8 @@ By contributing you agree to the [LICENSE](LICENSE) of this repository.
 
 - Pull / Merge Request descriptions should include a change summary that matches the [Keep a CHANGELOG](http://keepachangelog.com/) format
 
-- this project uses the [GitHub Flow](https://guides.github.com/introduction/flow/) branching scheme, so changes should target the "master" branch
+- this project uses the [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/) branching scheme, so changes should target the "develop" branch
+
 
 - feel free to submit un-squashed commits provided tests pass for all commits
 
