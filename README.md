@@ -12,7 +12,7 @@ npm install -g @blinkmobile/cli @blinkmobile/client-cli
 ## Scope
 
 `bm client scope` => To see what the current scope is set to
-`bm client scope --bucket <your bucket name>` => To set the scope to the provided bucket name
+`bm client scope <your bucket name>` => To set the scope to the provided bucket name
 
 ## Deploying
 `bm client deploy <path to files>` => Upload the files in `<path to files>` to the specified scope
