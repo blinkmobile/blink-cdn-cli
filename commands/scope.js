@@ -13,8 +13,9 @@ function write (bucketName, region) {
 }
 
 module.exports = function (input, flags, options) {
-  if (flags.bucket) {
-    return write(flags.bucket, flags.region || REGION).then(scope.show);
+  let bucket = flags.bucket || input[0];
+  if (bucket) {
+    return write(bucket, flags.region || REGION).then(scope.show);
   }
 
   scope.show();
