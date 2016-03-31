@@ -35,6 +35,7 @@
   "bugs": {
     "url": "https://github.com/blinkmobile/client-cli/issues"
   },
+  "access": "public",
   "homepage": "https://github.com/blinkmobile/client-cli#readme",
   "devDependencies": {
     "ava": "^0.12.0",
