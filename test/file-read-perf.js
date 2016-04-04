@@ -59,7 +59,7 @@ function makeTest (timerLabel, numFiles) {
     const deploy = require('../commands/deploy');
     const upload = (dir) => {
       console.time(timerLabel);
-      deploy([dir]);
+      deploy([dir], {});
     };
 
     let tempPath;

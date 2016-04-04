@@ -1,4 +1,4 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 'use strict';
 
 // foreign modules
@@ -16,7 +16,10 @@ const cli = meow({
   help,
   version: true
 }, {
-  boolean: [ 'prune' ],
+  boolean: [ 'prune', 'skip' ],
+  default: {
+    skip: true
+  },
   string: ['bucket', 'region']
 });
 
