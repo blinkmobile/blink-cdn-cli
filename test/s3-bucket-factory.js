@@ -17,7 +17,7 @@ test.afterEach(() => {
   mockery.disable();
 });
 
-test('it should have the bucket name pre-configured', t => {
+test('it should have the bucket name pre-configured', (t) => {
   const params = {
     region: 'region',
     params: {
@@ -35,5 +35,5 @@ test('it should have the bucket name pre-configured', t => {
   mockery.registerMock(s3BucketParamsModule, s3BucketParamsMock);
 
   const s3Factory = require('../lib/s3-bucket-factory.js');
-  return s3Factory().then(s3 => t.ok(s3.config.params.Bucket));
+  return s3Factory().then((s3) => t.ok(s3.config.params.Bucket));
 });

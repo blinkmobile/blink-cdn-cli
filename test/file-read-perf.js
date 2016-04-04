@@ -26,7 +26,7 @@ const s3BucketFactoryMock = () => Promise.resolve({
   upload (options, callback) { callback(null); }
 });
 
-const makeArray = num => {
+const makeArray = (num) => {
   let arr = [];
   for (let i = 0; i < num; ++i) {
     arr.push(i);
@@ -35,7 +35,7 @@ const makeArray = num => {
   return arr;
 };
 
-const createFile = dir => id => {
+const createFile = (dir) => (id) => {
   const filePath = path.join(dir, `${id}.js`);
   return pWriteFile(filePath, fileData);
 };
@@ -55,20 +55,20 @@ mockery.registerAllowables([
 test.after(() => mockery.disable());
 
 function makeTest (timerLabel, numFiles) {
-  return t => {
+  return (t) => {
     const deploy = require('../commands/deploy');
-    const upload = dir => {
+    const upload = (dir) => {
       console.time(timerLabel);
       deploy([dir]);
     };
 
     let tempPath;
-    return pMkdir('temp' + numFiles).then(dirPath => {
+    return pMkdir('temp' + numFiles).then((dirPath) => {
       let count = makeArray(100);
       tempPath = dirPath;
       return Promise.all(count.map(createFile(tempPath)));
-    }).then(results => upload(tempPath))
-      .then(result => console.timeEnd(timerLabel));
+    }).then((results) => upload(tempPath))
+      .then((result) => console.timeEnd(timerLabel));
   };
 }
 
