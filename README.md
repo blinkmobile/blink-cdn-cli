@@ -9,10 +9,23 @@ See [usage.md](https://github.com/blinkmobile/client-cli/blob/develop/docs/usage
 npm install -g @blinkmobile/cli @blinkmobile/client-cli
 ```
 
-## Scope
+## Usage
 
-`bm client scope` => To see what the current scope is set to
-`bm client scope <your bucket name>` => To set the scope to the provided bucket name
+```
+blinkm client --help
 
-## Deploying
-`bm client deploy <path to files>` => Upload the files in `<path to files>` to the specified scope
+# or, shorter
+bm client --help
+```
+
+```
+Initial settings:
+    scope                 => outputs the current scope
+    scope <S3Bucket>      => sets the bucket
+      --region <S3Region> => optionally sets the region
+
+Deploying client side code:
+    deploy <path>         => uploads files in <path> to the scoped bucket
+      --skip              => bypass unchanged files (default)
+      --no-skip           => upload all files, including unchanged
+```

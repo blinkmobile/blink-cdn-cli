@@ -18,7 +18,7 @@ test.afterEach(() => {
   mockery.disable();
 });
 
-test.serial('it should return the currently set scope', t => {
+test.serial('it should return the currently set scope', (t) => {
   const expectedScope = 'a';
   const configHelperMock = {
     read: () => Promise.resolve({cdn: {scope: expectedScope}})
@@ -28,10 +28,10 @@ test.serial('it should return the currently set scope', t => {
 
   const scope = require(scopeModule);
 
-  return scope.read().then(s => t.same(s.scope, expectedScope));
+  return scope.read().then((s) => t.same(s.scope, expectedScope));
 });
 
-test.serial('it should handle an unitinitalised config file', t => {
+test.serial('it should handle an unitinitalised config file', (t) => {
   const expectedScope = undefined;
   const configHelperMock = {
     read: () => Promise.resolve({})
@@ -40,12 +40,12 @@ test.serial('it should handle an unitinitalised config file', t => {
   mockery.registerMock(configHelperModule, configHelperMock);
 
   const scope = require(scopeModule);
-  return scope.read().then(s => t.same(s.scope, expectedScope));
+  return scope.read().then((s) => t.same(s.scope, expectedScope));
 });
 
-test.serial('it should reject if no scope is set', t => {
+test.serial('it should reject if no scope is set', (t) => {
   const configHelperMock = {
-    write: fn => Promise.reject({})
+    write: (fn) => Promise.reject({})
   };
 
   mockery.registerMock(configHelperModule, configHelperMock);
@@ -55,7 +55,7 @@ test.serial('it should reject if no scope is set', t => {
   t.throws(p, 'Options.scope was not defined.');
 });
 
-test.serial('it should merge new scope with the current config', t => {
+test.serial('it should merge new scope with the current config', (t) => {
   const originalConfig = {
     bmp: {
       scope: 'blah'
@@ -67,13 +67,13 @@ test.serial('it should merge new scope with the current config', t => {
   };
 
   const configHelperMock = {
-    write: fn => Promise.resolve(fn(originalConfig))
+    write: (fn) => Promise.resolve(fn(originalConfig))
   };
 
   mockery.registerMock(configHelperModule, configHelperMock);
 
   const scope = require(scopeModule);
-  scope.write({scope: 'c'}).then(config => {
+  scope.write({scope: 'c'}).then((config) => {
     t.notSame(config.cdn.scope, 'old');
     t.same(config.cdn.scope, 'c');
     t.same(config.cdn.extra, 'existing');

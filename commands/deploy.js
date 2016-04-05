@@ -18,7 +18,8 @@ module.exports = function (input, flags, options) {
     .then((s3) => {
       const task = upload({
         cwd: sourceDir,
-        s3
+        s3,
+        skip: flags.skip
       });
       task.on('skipped', (fileName) => {
         clearTimeout(timer);
