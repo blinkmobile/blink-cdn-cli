@@ -50,9 +50,9 @@
     "temp": "^0.8.3"
   },
   "dependencies": {
+    "@blinkmobile/aws-profile-management": "0.0.1",
     "@blinkmobile/aws-s3": "1.2.0",
     "@blinkmobile/blinkmrc": "^1.1.0",
-    "aws-sdk": "^2.2.36",
     "elegant-spinner": "1.0.1",
     "log-update": "1.0.2",
     "meow": "^3.7.0",
