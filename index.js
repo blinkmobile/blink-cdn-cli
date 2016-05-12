@@ -13,8 +13,7 @@ const help = require('./lib/help.js');
 
 const commands = {
   scope: require('./commands/scope.js'),
-  deploy: require('./commands/deploy.js'),
-  profile: require('./commands/profile.js')
+  deploy: require('./commands/deploy.js')
 };
 
 updateNotifier({ pkg }).notify();
