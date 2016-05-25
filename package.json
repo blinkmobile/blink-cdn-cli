@@ -1,6 +1,6 @@
 {
   "name": "@blinkmobile/client-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI utility for BlinkMobile's Mobility Platform CDN",
   "main": "index.js",
   "bin": {
@@ -50,7 +50,7 @@
     "temp": "^0.8.3"
   },
   "dependencies": {
-    "@blinkmobile/aws-profile-management": "0.0.1",
+    "@blinkmobile/aws-profile-management": "1.0.1",
     "@blinkmobile/aws-s3": "1.2.0",
     "@blinkmobile/blinkmrc": "^1.1.0",
     "elegant-spinner": "1.0.1",
