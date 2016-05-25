@@ -16,11 +16,16 @@ module.exports = function (input, flags, options) {
 
   return s3Factory()
     .then((s3) => {
-      const task = upload({
-        cwd: sourceDir,
+      const uploadParams = {
         s3,
         skip: flags.skip
-      });
+      };
+
+      if (sourceDir) {
+        uploadParams.cwd = sourceDir;
+      }
+
+      const task = upload(uploadParams);
       task.on('skipped', (fileName) => {
         clearTimeout(timer);
         console.log(`skipped: ${fileName}`);
