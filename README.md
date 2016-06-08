@@ -1,4 +1,4 @@
-# Client Side code deployment [![npm](https://img.shields.io/npm/v/@blinkmobile/client-cli.svg?maxAge=2592000)](https://www.npmjs.com/package/@blinkmobile/client-cli) [![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/blinkmobile/blink-cdn-cli?branch=master&svg=true)](https://ci.appveyor.com/project/blinkmobile/blink-cdn-cli) [![Travis CI Status](https://travis-ci.org/blinkmobile/blink-cdn-cli.svg?branch=master)](https://travis-ci.org/blinkmobile/blink-cdn-cli)
+# Client Side code deployment [![npm](https://img.shields.io/npm/v/@blinkmobile/client-cli.svg?maxAge=2592000)](https://www.npmjs.com/package/@blinkmobile/client-cli) [![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/jokeyrhyme/client-cli?branch=master&svg=true)](https://ci.appveyor.com/project/jokeyrhyme/client-cli) [![Travis CI Status](https://travis-ci.org/blinkmobile/client-cli.svg?branch=master)](https://travis-ci.org/blinkmobile/client-cli)
 
 This tool is for deploying client side code for web apps to the Blink Mobile CDN.
 
