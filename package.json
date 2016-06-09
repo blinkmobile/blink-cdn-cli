@@ -3,7 +3,6 @@
   "description": "CLI utility for BlinkMobile's Mobility Platform CDN",
   "version": "0.2.0",
   "author": "Blink Mobile",
-  "preferGlobal": true,
   "bin": {
     "blinkm-client": "./bin/index.js"
   },
@@ -55,6 +54,7 @@
   ],
   "license": "BSD-3-Clause",
   "main": "index.js",
+  "preferGlobal": true,
   "publishConfig": {
     "access": "public"
   },
