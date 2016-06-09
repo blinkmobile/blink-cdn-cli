@@ -5,18 +5,18 @@ This tool is for deploying client side code for web apps to the Blink Mobile CDN
 See [usage.md](https://github.com/blinkmobile/client-cli/blob/develop/docs/usage.md) for detailed usage instructions.
 
 ## Installation
+
 ```
 npm install -g @blinkmobile/cli @blinkmobile/client-cli
 ```
 
 ## Usage
 
-```
-blinkm client --help
+`blinkm client --help`
 
 # or, shorter
-bm client --help
-```
+
+`bm client --help`
 
 ```
 Initial settings:
@@ -28,4 +28,5 @@ Deploying client side code:
     deploy <path>         => uploads files in <path> to the scoped bucket
       --skip              => bypass unchanged files (default)
       --no-skip           => upload all files, including unchanged
+      --prune             => remove files that do not exist locally from the server
 ```
