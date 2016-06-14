@@ -16,11 +16,17 @@ module.exports = function (input, flags, options) {
 
   return s3Factory()
     .then((s3) => {
-      const task = upload({
-        cwd: sourceDir,
+      const uploadParams = {
         s3,
-        skip: flags.skip
-      });
+        skip: flags.skip,
+        prune: flags.prune
+      };
+
+      if (sourceDir) {
+        uploadParams.cwd = sourceDir;
+      }
+
+      const task = upload(uploadParams);
       task.on('skipped', (fileName) => {
         clearTimeout(timer);
         console.log(`skipped: ${fileName}`);
@@ -28,6 +34,10 @@ module.exports = function (input, flags, options) {
       task.on('uploaded', (fileName) => {
         clearTimeout(timer);
         console.log(`uploaded: ${fileName}`);
+      });
+      task.on('deleted', (fileName) => {
+        clearTimeout(timer);
+        console.log(`deleted: ${fileName}`);
       });
       return task.promise;
     })

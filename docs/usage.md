@@ -47,3 +47,10 @@ css/
   + layout.css
   + bootstrap.css
 ```
+
+
+## Removing files from the cdn
+
+Remove the files from your local folder, then deploy using `--prune`:
+
+`bm client deploy <path-to-files> --prune`
