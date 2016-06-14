@@ -30,3 +30,14 @@ Deploying client side code:
       --no-skip           => upload all files, including unchanged
       --prune             => remove files that do not exist locally from the server
 ```
+
+# Profile Management
+
+If you have multiple sets of credentials, you can manage them via the `bm-profile` package:
+
+```
+npm install -g @blinkmobile/cli @blinkmobile/bm-profile
+
+bm profile client-cli-profile
+```
+See the [bm-profile](https://www.npmjs.com/package/@blinkmobile/bm-profile) documentation for more information.
