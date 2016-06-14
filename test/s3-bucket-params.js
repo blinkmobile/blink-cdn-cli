@@ -50,7 +50,7 @@ test.serial('it should return the stored params', (t) => {
 
   t.plan(1);
 
-  return scope.read().then((s) => t.same(expectedConfig, s));
+  return scope.read().then((s) => t.deepEqual(expectedConfig, s));
 });
 
 test.serial('it should return the default params and call write()', (t) => {
@@ -73,5 +73,5 @@ test.serial('it should return the default params and call write()', (t) => {
 
   const scope = require(s3BucketParamsModule);
 
-  return scope.read().then((s) => t.same(config.objectParams, s.objectParams));
+  return scope.read().then((s) => t.deepEqual(config.objectParams, s.objectParams));
 });

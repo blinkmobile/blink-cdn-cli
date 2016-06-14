@@ -18,7 +18,8 @@ module.exports = function (input, flags, options) {
     .then((s3) => {
       const uploadParams = {
         s3,
-        skip: flags.skip
+        skip: flags.skip,
+        prune: flags.prune
       };
 
       if (sourceDir) {
@@ -33,6 +34,10 @@ module.exports = function (input, flags, options) {
       task.on('uploaded', (fileName) => {
         clearTimeout(timer);
         console.log(`uploaded: ${fileName}`);
+      });
+      task.on('deleted', (fileName) => {
+        clearTimeout(timer);
+        console.log(`deleted: ${fileName}`);
       });
       return task.promise;
     })

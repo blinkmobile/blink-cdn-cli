@@ -1,5 +1,18 @@
 # Change Log
 
+## 0.2.0
+
+### Changed
+
+- CC-16: update to  [blinkmobile/aws-s3.js 2.0.0](https://github.com/blinkmobile/aws-s3.js/releases/tag/2.0.0)
+
+### Added
+
+- CC-16: `deploy --prune` options
+
+### Fixed
+
+- CC-14: `deploy` now uses the cwd if no path is specified
 
 ## 0.1.0 - 2016-04-05
 
