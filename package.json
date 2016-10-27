@@ -24,9 +24,11 @@
     "eslint": "^3.6.1",
     "eslint-config-semistandard": "^7.0.0",
     "eslint-config-standard": "^6.1.0",
+    "eslint-plugin-node": "^2.1.3",
     "eslint-plugin-promise": "^3.0.0",
     "eslint-plugin-standard": "^2.0.0",
     "fixpack": "^2.3.1",
+    "flow-bin": "^0.33.0",
     "mockery": "^2.0.0",
     "npm-bin-ava-tester": "^1.0.0",
     "npm-run-all": "^3.1.0",
@@ -67,6 +69,7 @@
     "ava": "ava",
     "eslint": "eslint --fix --cache .",
     "fixpack": "fixpack",
+    "flow_check": "flow check",
     "posttest": "npm-run-all eslint fixpack",
     "test": "npm-run-all ava"
   }
