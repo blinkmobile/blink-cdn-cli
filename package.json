@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@blinkmobile/aws-profile-management": "1.0.1",
-    "@blinkmobile/aws-s3": "2.0.0",
+    "@blinkmobile/aws-s3": "2.1.0",
     "@blinkmobile/blinkmrc": "^1.1.0",
     "elegant-spinner": "1.0.1",
     "log-update": "1.0.2",
