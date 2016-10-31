@@ -4,6 +4,9 @@
 ## Unreleased
 
 
+## 0.3.0 - 2016-10-31
+
+
 ### Added
 
 -   CC-17: ignore files per [.blinkmignore](https://github.com/blinkmobile/aws-s3.js#blinkmignore)
