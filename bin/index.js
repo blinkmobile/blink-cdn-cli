@@ -3,14 +3,18 @@
 
 // foreign modules
 
+const updateNotifier = require('update-notifier');
 const meow = require('meow');
 
 // local modules
 
-const main = require('..');
 const help = require('../lib/help');
+const main = require('../index.js');
+const pkg = require('../package.json');
 
 // this module
+
+updateNotifier({ pkg }).notify();
 
 const cli = meow({
   help,
