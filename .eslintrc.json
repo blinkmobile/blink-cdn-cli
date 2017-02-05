@@ -9,7 +9,8 @@
     "node": true
   },
   "rules": {
-    "no-console": 0
+    "no-console": 0,
+    "no-process-exit": 1 /* TODO: fix code and drop this exception */
   },
   "plugins": [
     "node"
