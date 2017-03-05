@@ -45,7 +45,7 @@ test.serial('it should handle an unitinitalised config file', (t) => {
 
 test.serial('it should reject if no scope is set', (t) => {
   const configHelperMock = {
-    write: (fn) => Promise.reject({})
+    write: (fn) => Promise.reject(new Error())
   };
 
   mockery.registerMock(configHelperModule, configHelperMock);
