@@ -17,18 +17,18 @@
     "log-update": "1.0.2",
     "meow": "3.7.0",
     "object-merge": "2.5.1",
-    "update-notifier": "1.0.3"
+    "update-notifier": "2.1.0"
   },
   "devDependencies": {
     "ava": "^0.18.1",
     "eslint": "^3.8.1",
     "eslint-config-semistandard": "^7.0.0",
-    "eslint-config-standard": "^6.2.1",
+    "eslint-config-standard": "^7.0.0",
     "eslint-plugin-node": "^4.0.0",
     "eslint-plugin-promise": "^3.3.0",
     "eslint-plugin-standard": "^2.0.1",
     "fixpack": "^2.3.1",
-    "flow-bin": "^0.38.0",
+    "flow-bin": "^0.40.0",
     "mockery": "^2.0.0",
     "npm-bin-ava-tester": "^1.1.0",
     "npm-run-all": "^4.0.0",
