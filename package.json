@@ -71,6 +71,7 @@
     "fixpack": "fixpack",
     "flow_check": "flow check",
     "posttest": "npm-run-all eslint fixpack",
-    "test": "npm-run-all ava"
+    "test": "npm-run-all ava",
+    "pretest": "npm run fixpack"
   }
 }
