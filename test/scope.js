@@ -52,7 +52,7 @@ test.serial('it should reject if no scope is set', (t) => {
 
   const scope = require(scopeModule);
   let p = scope.write();
-  t.throws(p, 'Options.scope was not defined.');
+  return t.throws(p, 'Options.scope was not defined.');
 });
 
 test.serial('it should merge new scope with the current config', (t) => {
@@ -73,7 +73,7 @@ test.serial('it should merge new scope with the current config', (t) => {
   mockery.registerMock(configHelperModule, configHelperMock);
 
   const scope = require(scopeModule);
-  scope.write({scope: 'c'}).then((config) => {
+  return scope.write({scope: 'c'}).then((config) => {
     t.not(config.cdn.scope, 'old');
     t.is(config.cdn.scope, 'c');
     t.is(config.cdn.extra, 'existing');
