@@ -63,12 +63,14 @@ function makeTest (timerLabel, numFiles) {
     };
 
     let tempPath;
-    return pMkdir('temp' + numFiles).then((dirPath) => {
+    const promise = pMkdir('temp' + numFiles).then((dirPath) => {
       let count = makeArray(100);
       tempPath = dirPath;
       return Promise.all(count.map(createFile(tempPath)));
     }).then((results) => upload(tempPath))
       .then((result) => console.timeEnd(timerLabel));
+
+    return t.notThrows(promise);
   };
 }
 
