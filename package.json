@@ -14,7 +14,7 @@
     "@blinkmobile/aws-s3": "2.1.0",
     "@blinkmobile/blinkmrc": "^1.1.0",
     "elegant-spinner": "1.0.1",
-    "log-update": "1.0.2",
+    "log-update": "2.0.0",
     "meow": "3.7.0",
     "object-merge": "2.5.1",
     "update-notifier": "2.1.0"
