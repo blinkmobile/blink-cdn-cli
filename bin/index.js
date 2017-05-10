@@ -1,20 +1,20 @@
 #!/usr/bin/env node
-'use strict';
+'use strict'
 
 // foreign modules
 
-const updateNotifier = require('update-notifier');
-const meow = require('meow');
+const updateNotifier = require('update-notifier')
+const meow = require('meow')
 
 // local modules
 
-const help = require('../lib/help');
-const main = require('../index.js');
-const pkg = require('../package.json');
+const help = require('../lib/help')
+const main = require('../index.js')
+const pkg = require('../package.json')
 
 // this module
 
-updateNotifier({ pkg }).notify();
+updateNotifier({ pkg }).notify()
 
 const cli = meow({
   help,
@@ -25,6 +25,6 @@ const cli = meow({
     skip: true
   },
   string: ['bucket', 'region']
-});
+})
 
-main(cli.input, cli.flags);
+main(cli.input, cli.flags)
