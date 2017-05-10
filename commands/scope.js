@@ -6,10 +6,6 @@ const REGION = 'ap-southeast-2'
 
 function write (bucketName, region) {
   return scope.write({ scope: bucketName, region })
-    .catch((err) => {
-      console.error(err)
-      process.exit(1)
-    })
 }
 
 module.exports = function (input, flags, options) {
@@ -18,5 +14,5 @@ module.exports = function (input, flags, options) {
     return write(bucket, flags.region || REGION).then(scope.show)
   }
 
-  scope.show()
+  return scope.show()
 }
