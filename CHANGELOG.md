@@ -3,15 +3,13 @@
 
 ## Unreleased
 
-## 1.0.0
-
 ### Added
 
 -   CC-20: Integrate bm-identity.js to allow for single login
 
 ### Changed
 
-- dropped semistandard style in favor of standard style
+-   CC-20: dropped semistandard style in favor of standard style
 
 ## 0.3.0 - 2016-10-31
 

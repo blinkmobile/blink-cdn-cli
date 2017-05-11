@@ -3,7 +3,8 @@
 const test = require('ava')
 const mockery = require('mockery')
 
-const s3BucketParamsModule = './s3-bucket-params'
+const s3BucketParamsModule = './s3-bucket-params.js'
+const identityModule = '@blinkmobile/bm-identity'
 
 test.beforeEach(() => {
   mockery.enable({ useCleanCache: true })
@@ -31,8 +32,13 @@ test('it should have the bucket name pre-configured', (t) => {
     read: () => Promise.resolve(params)
   }
 
+  function bmIdentityMock () {
+    this.assumeAWSRole = () => Promise.resolve({accessKey: 'abcd'})
+  }
+
   mockery.warnOnUnregistered(false)
   mockery.registerMock(s3BucketParamsModule, s3BucketParamsMock)
+  mockery.registerMock(identityModule, bmIdentityMock)
 
   const s3Factory = require('../lib/s3-bucket-factory.js')
   return s3Factory().then((s3) => t.truthy(s3.config.params.Bucket))

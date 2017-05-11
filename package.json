@@ -1,20 +1,20 @@
 {
   "name": "@blinkmobile/client-cli",
   "description": "CLI utility for BlinkMobile's Mobility Platform CDN",
-  "version": "1.0.0",
+  "version": "0.3.0",
   "author": "Blink Mobile",
-  "contributors": [
-    {
-      "name": "Simon Dobie",
-      "email": "simon@blinkmobile.com.au"
-    }
-  ],
   "bin": {
     "blinkm-client": "./bin/index.js"
   },
   "bugs": {
     "url": "https://github.com/blinkmobile/client-cli/issues"
   },
+  "contributors": [
+    {
+      "name": "Simon Dobie",
+      "email": "simon@blinkmobile.com.au"
+    }
+  ],
   "dependencies": {
     "@blinkmobile/aws-s3": "2.1.0",
     "@blinkmobile/blinkmrc": "^1.1.0",
