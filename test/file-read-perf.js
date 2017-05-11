@@ -8,8 +8,7 @@ const temp = require('temp')
 const mockery = require('mockery')
 // require now to avoid mockery warnings
 require('@blinkmobile/aws-s3')
-require('elegant-spinner')
-require('log-update')
+require('ora')
 
 const fileData = 'test contents\n\n'
 const pWriteFile = pify(fs.writeFile)
@@ -48,8 +47,7 @@ mockery.registerAllowables([
   'fs',
   'path',
   '@blinkmobile/aws-s3',
-  'elegant-spinner',
-  'log-update'
+  'ora'
 ])
 
 test.after(() => mockery.disable())
