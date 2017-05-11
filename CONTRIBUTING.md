@@ -64,7 +64,7 @@ By contributing you agree to the [LICENSE](LICENSE) of this repository.
 
 - adhere to our code style guides
 
-- [![js-semistandard-style](https://cdn.rawgit.com/flet/semistandard/master/badge.svg)](https://github.com/Flet/semistandard)
+- [![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 - run `npm test` to ensure your changes follow our coding standards and pass our existing tests
 

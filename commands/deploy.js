@@ -9,7 +9,6 @@ module.exports = function (input, flags, options) {
   const spinner = ora({spinner: 'growHorizontal', text: 'Uploading to CDN'})
 
   let sourceDir = input[0] || null
-  spinner.start()
 
   return s3Factory()
     .then((s3) => {
@@ -23,6 +22,7 @@ module.exports = function (input, flags, options) {
         uploadParams.cwd = sourceDir
       }
 
+      spinner.start()
       const task = upload(uploadParams)
       task.on('skipped', (fileName) => {
         spinner.warn(`skipped: ${fileName}`)
