@@ -19,7 +19,7 @@ const chainer = {
   send: () => chainer
 }
 
-const s3FactoryModule = '../lib/s3-bucket-factory'
+const s3FactoryModule = '../lib/s3-bucket-factory.js'
 const s3BucketFactoryMock = () => Promise.resolve({
   listObjectsV2 (options, callback) { callback(null, { Contents: [] }) },
   upload (options, callback) { callback(null) }
