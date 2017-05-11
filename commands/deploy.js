@@ -1,18 +1,15 @@
 'use strict'
 
-const elegantSpinner = require('elegant-spinner')
-const logUpdate = require('log-update')
+const ora = require('ora')
 const upload = require('@blinkmobile/aws-s3').upload
 
-const s3Factory = require('../lib/s3-bucket-factory')
+const s3Factory = require('../lib/s3-bucket-factory.js')
 
 module.exports = function (input, flags, options) {
-  const frame = elegantSpinner()
-  let timer = setInterval(() => {
-    logUpdate(frame())
-  }, 100)
+  const spinner = ora({spinner: 'growHorizontal', text: 'Uploading to CDN'})
 
   let sourceDir = input[0] || null
+  spinner.start()
 
   return s3Factory()
     .then((s3) => {
@@ -28,28 +25,21 @@ module.exports = function (input, flags, options) {
 
       const task = upload(uploadParams)
       task.on('skipped', (fileName) => {
-        clearTimeout(timer)
-        console.log(`skipped: ${fileName}`)
+        spinner.warn(`skipped: ${fileName}`)
       })
       task.on('uploaded', (fileName) => {
-        clearTimeout(timer)
-        console.log(`uploaded: ${fileName}`)
+        spinner.succeed(`uploaded: ${fileName}`)
       })
       task.on('deleted', (fileName) => {
-        clearTimeout(timer)
-        console.log(`deleted: ${fileName}`)
+        spinner.warn(`deleted: ${fileName}`)
       })
       return task.promise
     })
     .then(() => {
-      clearTimeout(timer)
-      process.exit(0) // mysteriously required ??
+      spinner.stop()
     })
     .catch((err) => {
-      clearTimeout(timer)
-      console.log()
-      console.error(err)
-      console.log()
-      process.exit(1)
+      spinner.stop()
+      return Promise.reject(err)
     })
 }

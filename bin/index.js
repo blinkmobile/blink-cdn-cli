@@ -9,7 +9,7 @@ const chalk = require('chalk')
 
 // local modules
 
-const help = require('../lib/help')
+const help = require('../lib/help.js')
 const pkg = require('../package.json')
 const BlinkMobileIdentity = require('@blinkmobile/bm-identity')
 const blinkMobileIdentity = new BlinkMobileIdentity(pkg.name)
@@ -52,6 +52,8 @@ Command not implemented: ${command}`))
 }
 
 commands[command](cli.input.slice(1), cli.flags, { cwd: process.cwd(), blinkMobileIdentity })
+  // remove the blow when https://blinkmobile.atlassian.net/browse/CC-22 is done
+  .then(() => process.listenerCount('SIGINT') > 0 ? process.exit() : true)
   .catch((err) => {
     console.log(`There was a problem executing '${command}':
 
