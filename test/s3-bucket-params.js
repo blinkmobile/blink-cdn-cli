@@ -1,22 +1,22 @@
-'use strict';
+'use strict'
 
-const test = require('ava');
-const mockery = require('mockery');
+const test = require('ava')
+const mockery = require('mockery')
 
-const configHelperModule = './utils/config-helper';
-const s3BucketParamsModule = '../lib/s3-bucket-params';
+const configHelperModule = './utils/config-helper'
+const s3BucketParamsModule = '../lib/s3-bucket-params'
 
 test.beforeEach(() => {
-  mockery.enable({ useCleanCache: true });
-  mockery.registerAllowable(s3BucketParamsModule, true);
-  mockery.registerAllowables(['object-merge', 'object-foreach', 'clone-function']);
-});
+  mockery.enable({ useCleanCache: true })
+  mockery.registerAllowable(s3BucketParamsModule, true)
+  mockery.registerAllowables(['object-merge', 'object-foreach', 'clone-function'])
+})
 
 test.afterEach(() => {
-  mockery.deregisterAll();
-  mockery.resetCache();
-  mockery.disable();
-});
+  mockery.deregisterAll()
+  mockery.resetCache()
+  mockery.disable()
+})
 
 test.serial('it should return the stored params', (t) => {
   const config = {
@@ -28,7 +28,7 @@ test.serial('it should return the stored params', (t) => {
         ACL: 'public-read'
       }
     }
-  };
+  }
   const expectedConfig = {
     computeChecksums: true,
     region: 'b',
@@ -37,21 +37,21 @@ test.serial('it should return the stored params', (t) => {
       Expires: 60,
       ACL: 'public-read'
     }
-  };
+  }
 
   const configHelperMock = {
     read: () => Promise.resolve(config),
     write: () => new Error('should not be executed')
-  };
+  }
 
-  mockery.registerMock(configHelperModule, configHelperMock);
+  mockery.registerMock(configHelperModule, configHelperMock)
 
-  const scope = require(s3BucketParamsModule);
+  const scope = require(s3BucketParamsModule)
 
-  t.plan(1);
+  t.plan(1)
 
-  return scope.read().then((s) => t.deepEqual(expectedConfig, s));
-});
+  return scope.read().then((s) => t.deepEqual(expectedConfig, s))
+})
 
 test.serial('it should return the default params and call write()', (t) => {
   const config = {
@@ -62,16 +62,16 @@ test.serial('it should return the default params and call write()', (t) => {
         ACL: 'public-read'
       }
     }
-  };
+  }
 
   const configHelperMock = {
     read: () => Promise.resolve(config),
     write: () => Promise.resolve(config.cdn.objectParams)
-  };
+  }
 
-  mockery.registerMock(configHelperModule, configHelperMock);
+  mockery.registerMock(configHelperModule, configHelperMock)
 
-  const scope = require(s3BucketParamsModule);
+  const scope = require(s3BucketParamsModule)
 
-  return scope.read().then((s) => t.deepEqual(config.objectParams, s.objectParams));
-});
+  return scope.read().then((s) => t.deepEqual(config.objectParams, s.objectParams))
+})
