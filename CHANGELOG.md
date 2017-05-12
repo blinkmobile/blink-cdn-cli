@@ -6,6 +6,7 @@
 ### Added
 
 -   CC-20: Integrate bm-identity.js to allow for single login
+-   CC-31: Update Documentation for identity cli integration
 
 ### Changed
 

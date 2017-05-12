@@ -27,23 +27,16 @@ Initial settings:
       --region <S3Region> => optionally sets the region
 
 Deploying client side code:
+
+  The deploy command requires a login to BlinkMobile before use.
+  For help on the login and logout commands please see:
+  https://github.com/blinkmobile/identity-cli#usage
+
     deploy <path>         => uploads files in <path> to the scoped bucket
       --skip              => bypass unchanged files (default)
       --no-skip           => upload all files, including unchanged
       --prune             => remove files that do not exist locally from the server
 ```
-
-### Profile Management
-
-If you have multiple sets of credentials, you can manage them via the `bm-profile` package:
-
-```
-npm install -g @blinkmobile/cli @blinkmobile/bm-profile
-
-bm profile client-cli-profile
-```
-See the [bm-profile](https://www.npmjs.com/package/@blinkmobile/bm-profile) documentation for more information.
-
 
 ### .blinkmignore
 

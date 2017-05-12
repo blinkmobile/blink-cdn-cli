@@ -52,8 +52,6 @@ Command not implemented: ${command}`))
 }
 
 commands[command](cli.input.slice(1), cli.flags, { cwd: process.cwd(), blinkMobileIdentity })
-  // remove the blow when https://blinkmobile.atlassian.net/browse/CC-22 is done
-  .then(() => process.listenerCount('SIGINT') > 0 ? process.exit() : true)
   .catch((err) => {
     console.log(`There was a problem executing '${command}':
 
@@ -65,3 +63,5 @@ Please fix the error and try again.
 )
     process.exitCode = 1
   })
+  // remove the blow when https://blinkmobile.atlassian.net/browse/CC-22 is done
+  .then(() => process.listenerCount('SIGINT') > 0 ? process.exit() : true)
