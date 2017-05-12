@@ -17,6 +17,9 @@ Will tell you what your bucket name and region are currently set to.
 
 ## Deploying files
 
+The deploy command requires a login to BlinkMobile before use.
+For help on the login and logout commands please see: [https://github.com/blinkmobile/identity-cli#usage](Identity CLI Usage)
+
 `blinkm client deploy <path-to-files>`
 
 When uploading, the specified path will become the root folder in the CDN:
