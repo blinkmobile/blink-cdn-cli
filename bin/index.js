@@ -27,21 +27,30 @@ const cli = meow({
   help,
   version: true
 }, {
-  boolean: [ 'prune', 'skip', 'debug' ],
+  boolean: [
+    'debug',
+    'prune',
+    'skip'
+  ],
   default: {
+    debug: false,
     skip: true
   },
-  string: ['bucket', 'region']
+  string: [
+    'bucket',
+    'region'
+  ]
 })
 
 const command = cli.input[0]
 
 if (!command) {
-  cli.showHelp(1)
+  cli.showHelp(0)
 }
 
 if (!commands[command]) {
-  console.error(`unknown command: ${command}`)
+  console.error(chalk.red(`
+Unknown command: ${command}`))
   cli.showHelp(1)
 }
 
@@ -53,14 +62,13 @@ Command not implemented: ${command}`))
 
 commands[command](cli.input.slice(1), cli.flags, { cwd: process.cwd(), blinkMobileIdentity })
   .catch((err) => {
-    console.log(`There was a problem executing '${command}':
+    console.log(`
+There was a problem executing '${command}':
 
-${err}
+${chalk.red(cli.flags.debug && err && err.stack ? err.stack : err)}
 
 Please fix the error and try again.
-
-`
-)
+`)
     process.exitCode = 1
   })
   // remove the blow when https://blinkmobile.atlassian.net/browse/CC-22 is done

@@ -7,6 +7,7 @@
 
 -   CC-20: Integrate bm-identity.js to allow for single login
 -   CC-31: Update Documentation for identity cli integration
+-   CC-32: Error stack trace output when using `--debug` flag
 
 ### Changed
 

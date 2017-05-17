@@ -25,6 +25,7 @@ Initial settings:
     scope                 => outputs the current scope
     scope <S3Bucket>      => sets the bucket
       --region <S3Region> => optionally sets the region
+      --debug             => output debug information
 
 Deploying client side code:
 
@@ -36,6 +37,7 @@ Deploying client side code:
       --skip              => bypass unchanged files (default)
       --no-skip           => upload all files, including unchanged
       --prune             => remove files that do not exist locally from the server
+      --debug             => output debug information
 ```
 
 ### .blinkmignore
