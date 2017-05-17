@@ -11,7 +11,7 @@ module.exports = function (
   input /* : string[] */,
   flags /* : Object */
 ) /* : Promise<void> */ {
-  return confirm(flags.force)
+  return confirm(flags.force, flags.env)
     .then((confirmation) => {
       if (!confirmation) {
         return
@@ -25,7 +25,8 @@ module.exports = function (
             s3,
             skip: flags.skip,
             prune: flags.prune,
-            cwd: flags.cwd
+            cwd: flags.cwd,
+            bucketPathPrefix: flags.env
           }
 
           spinner.start()

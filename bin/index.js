@@ -35,11 +35,13 @@ const cli = meow({
     debug: false,
     cwd: process.cwd(),
     force: false,
+    env: 'dev',
     skip: true
   },
   string: [
     'bucket',
     'cwd',
+    'env',
     'region'
   ]
 })

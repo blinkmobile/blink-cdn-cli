@@ -35,6 +35,7 @@ Deploying client side code:
   https://github.com/blinkmobile/identity-cli#usage
 
     deploy                => uploads files in the current working directory to the scoped bucket
+      --env <environment> => optionally sets the environment to deploy to, defaults to 'dev'
       --force             => deploy without confirmation
       --skip              => bypass unchanged files (default)
       --no-skip           => upload all files, including unchanged

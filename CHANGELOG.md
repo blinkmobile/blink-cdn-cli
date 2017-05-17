@@ -10,6 +10,7 @@
 -   CC-32: Error stack trace output when using `--debug` flag
 -   CC-32: `--cwd` flag to `deploy` and `scope` commands
 -   CC-32: `--force` flag to `deploy` command to prevent confirmation prompt
+-   CC-32: `--env` flag to `deploy` command to deploy to a specific environment
 
 ### Removed
 
