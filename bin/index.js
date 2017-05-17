@@ -11,8 +11,6 @@ const chalk = require('chalk')
 
 const help = require('../lib/help.js')
 const pkg = require('../package.json')
-const BlinkMobileIdentity = require('@blinkmobile/bm-identity')
-const blinkMobileIdentity = new BlinkMobileIdentity(pkg.name)
 
 // this module
 
@@ -34,10 +32,12 @@ const cli = meow({
   ],
   default: {
     debug: false,
+    cwd: process.cwd(),
     skip: true
   },
   string: [
     'bucket',
+    'cwd',
     'region'
   ]
 })
@@ -60,7 +60,7 @@ Command not implemented: ${command}`))
   cli.showHelp(1)
 }
 
-commands[command](cli.input.slice(1), cli.flags, { cwd: process.cwd(), blinkMobileIdentity })
+commands[command](cli.input.slice(1), cli.flags)
   .catch((err) => {
     console.log(`
 There was a problem executing '${command}':

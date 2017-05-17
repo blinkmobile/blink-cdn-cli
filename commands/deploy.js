@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 const ora = require('ora')
@@ -5,21 +6,19 @@ const upload = require('@blinkmobile/aws-s3').upload
 
 const s3Factory = require('../lib/s3-bucket-factory.js')
 
-module.exports = function (input, flags, options) {
+module.exports = function (
+  input /* : string[] */,
+  flags /* : Object */
+) /* : Promise<void> */ {
   const spinner = ora({spinner: 'growHorizontal', text: 'Uploading to CDN'})
 
-  let sourceDir = input[0] || null
-
-  return s3Factory()
+  return s3Factory(flags.cwd)
     .then((s3) => {
       const uploadParams = {
         s3,
         skip: flags.skip,
-        prune: flags.prune
-      }
-
-      if (sourceDir) {
-        uploadParams.cwd = sourceDir
+        prune: flags.prune,
+        cwd: flags.cwd
       }
 
       spinner.start()

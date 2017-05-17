@@ -28,7 +28,7 @@ test.serial('it should return the currently set scope', (t) => {
 
   const scope = require(scopeModule)
 
-  return scope.read().then((s) => t.is(s.scope, expectedScope))
+  return scope.read('.').then((s) => t.is(s.scope, expectedScope))
 })
 
 test.serial('it should handle an unitinitalised config file', (t) => {
@@ -40,7 +40,7 @@ test.serial('it should handle an unitinitalised config file', (t) => {
   mockery.registerMock(configHelperModule, configHelperMock)
 
   const scope = require(scopeModule)
-  return scope.read().then((s) => t.is(s.scope, expectedScope))
+  return scope.read('.').then((s) => t.is(s.scope, expectedScope))
 })
 
 test.serial('it should reject if no scope is set', (t) => {
@@ -51,7 +51,7 @@ test.serial('it should reject if no scope is set', (t) => {
   mockery.registerMock(configHelperModule, configHelperMock)
 
   const scope = require(scopeModule)
-  let p = scope.write()
+  let p = scope.write('.')
   return t.throws(p, 'Options.scope was not defined.')
 })
 
@@ -67,13 +67,13 @@ test.serial('it should merge new scope with the current config', (t) => {
   }
 
   const configHelperMock = {
-    write: (fn) => Promise.resolve(fn(originalConfig))
+    write: (cwd, fn) => Promise.resolve(fn(originalConfig))
   }
 
   mockery.registerMock(configHelperModule, configHelperMock)
 
   const scope = require(scopeModule)
-  return scope.write({scope: 'c'}).then((config) => {
+  return scope.write('.', {scope: 'c'}).then((config) => {
     t.not(config.cdn.scope, 'old')
     t.is(config.cdn.scope, 'c')
     t.is(config.cdn.extra, 'existing')

@@ -8,6 +8,12 @@
 -   CC-20: Integrate bm-identity.js to allow for single login
 -   CC-31: Update Documentation for identity cli integration
 -   CC-32: Error stack trace output when using `--debug` flag
+-   CC-32: `--cwd` flag to `deploy` and `scope` commands
+
+### Removed
+
+-   CC-32: `<path>` option from deploy command (functionality has been replaced by `--cwd` flag)
+
 
 ### Changed
 
