@@ -27,12 +27,14 @@ const cli = meow({
 }, {
   boolean: [
     'debug',
+    'force',
     'prune',
     'skip'
   ],
   default: {
     debug: false,
     cwd: process.cwd(),
+    force: false,
     skip: true
   },
   string: [
