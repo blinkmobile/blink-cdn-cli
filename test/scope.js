@@ -1,81 +1,41 @@
+/* @flow */
 'use strict'
 
+const path = require('path')
+
 const test = require('ava')
-const mockery = require('mockery')
 
-const configHelperModule = './utils/config-helper'
-const scopeModule = '../lib/scope'
+const scope = require('../lib/scope')
 
-test.beforeEach(() => {
-  mockery.enable({ useCleanCache: true })
-  mockery.registerAllowable(scopeModule, true)
-  mockery.registerAllowables(['object-merge', 'object-foreach', 'clone-function'])
+const EXISTING_PROJECT_PATH = path.join(__dirname, 'fixtures', 'existing-project')
+const UNITINITALISED_PROJECT_PATH = path.join(__dirname, 'fixtures', 'unitinitalised-project')
+const MERGE_OPTIONS_PROJECT_PATH = path.join(__dirname, 'fixtures', 'merge-project')
+
+test('it should return the currently set scope', (t) => {
+  return scope.read(EXISTING_PROJECT_PATH)
+    .then((s) => t.is(s.scope, 'customer-project.blinkm.io'))
 })
 
-test.afterEach(() => {
-  mockery.deregisterAll()
-  mockery.resetCache()
-  mockery.disable()
+test('it should log the currently set scope', (t) => {
+  return t.notThrows(scope.show(EXISTING_PROJECT_PATH))
 })
 
-test.serial('it should return the currently set scope', (t) => {
-  const expectedScope = 'a'
-  const configHelperMock = {
-    read: () => Promise.resolve({cdn: {scope: expectedScope}})
-  }
-
-  mockery.registerMock(configHelperModule, configHelperMock)
-
-  const scope = require(scopeModule)
-
-  return scope.read().then((s) => t.is(s.scope, expectedScope))
+test('it should handle an unitinitalised config file', (t) => {
+  return scope.read(UNITINITALISED_PROJECT_PATH)
+    .then((s) => t.is(s.scope, undefined))
 })
 
-test.serial('it should handle an unitinitalised config file', (t) => {
-  const expectedScope = undefined
-  const configHelperMock = {
-    read: () => Promise.resolve({})
-  }
-
-  mockery.registerMock(configHelperModule, configHelperMock)
-
-  const scope = require(scopeModule)
-  return scope.read().then((s) => t.is(s.scope, expectedScope))
-})
-
-test.serial('it should reject if no scope is set', (t) => {
-  const configHelperMock = {
-    write: (fn) => Promise.reject(new Error())
-  }
-
-  mockery.registerMock(configHelperModule, configHelperMock)
-
-  const scope = require(scopeModule)
-  let p = scope.write()
+test('it should reject if no scope is set', (t) => {
+  let p = scope.write('.', {})
   return t.throws(p, 'Options.scope was not defined.')
 })
 
-test.serial('it should merge new scope with the current config', (t) => {
-  const originalConfig = {
-    bmp: {
-      scope: 'blah'
-    },
-    cdn: {
-      scope: 'old',
-      extra: 'existing'
-    }
-  }
-
-  const configHelperMock = {
-    write: (fn) => Promise.resolve(fn(originalConfig))
-  }
-
-  mockery.registerMock(configHelperModule, configHelperMock)
-
-  const scope = require(scopeModule)
-  return scope.write({scope: 'c'}).then((config) => {
-    t.not(config.cdn.scope, 'old')
-    t.is(config.cdn.scope, 'c')
-    t.is(config.cdn.extra, 'existing')
-  })
+test('it should merge new scope with the current config', (t) => {
+  return scope.write(MERGE_OPTIONS_PROJECT_PATH, {scope: 'c'})
+    .then((config) => {
+      t.not(config.cdn.scope, 'old')
+      t.is(config.cdn.scope, 'c')
+      t.is(config.cdn.extra, 'existing')
+      return scope.write(MERGE_OPTIONS_PROJECT_PATH, {scope: 'old'})
+    })
 })

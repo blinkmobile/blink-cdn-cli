@@ -1,21 +1,33 @@
+/* @flow */
 'use strict'
 
 const test = require('ava')
 const mockery = require('mockery')
 
 const configHelperModule = './utils/config-helper'
-const s3BucketParamsModule = '../lib/s3-bucket-params'
 
 test.beforeEach(() => {
   mockery.enable({ useCleanCache: true })
-  mockery.registerAllowable(s3BucketParamsModule, true)
-  mockery.registerAllowables(['object-merge', 'object-foreach', 'clone-function'])
+  mockery.registerAllowable('../lib/s3-bucket-params', true)
+  mockery.registerAllowables(['object-merge', 'object-foreach', 'clone-function', '../lib/s3-bucket-params'])
 })
 
 test.afterEach(() => {
   mockery.deregisterAll()
   mockery.resetCache()
   mockery.disable()
+})
+
+test.serial('it should reject if scope cannot be found', (t) => {
+  const configHelperMock = {
+    read: () => Promise.reject(new Error())
+  }
+
+  mockery.registerMock(configHelperModule, configHelperMock)
+
+  const scope = require('../lib/s3-bucket-params')
+
+  return t.throws(scope.read(''), 'Scope has not been set yet, see --help for information on how to set scope.')
 })
 
 test.serial('it should return the stored params', (t) => {
@@ -46,32 +58,41 @@ test.serial('it should return the stored params', (t) => {
 
   mockery.registerMock(configHelperModule, configHelperMock)
 
-  const scope = require(s3BucketParamsModule)
+  const scope = require('../lib/s3-bucket-params')
 
   t.plan(1)
 
-  return scope.read().then((s) => t.deepEqual(expectedConfig, s))
+  return scope.read('').then((s) => t.deepEqual(expectedConfig, s))
 })
 
 test.serial('it should return the default params and call write()', (t) => {
-  const config = {
-    cdn: {
-      scope: 'a',
-      objectParams: {
-        Expires: 60,
-        ACL: 'public-read'
-      }
-    }
+  const expected = {
+    ACL: 'public-read',
+    Bucket: 'a',
+    Expires: 60
   }
 
   const configHelperMock = {
-    read: () => Promise.resolve(config),
-    write: () => Promise.resolve(config.cdn.objectParams)
+    read: () => Promise.resolve({
+      cdn: {
+        scope: 'a'
+      }
+    }),
+    write: () => Promise.resolve({
+      cdn: {
+        scope: 'a',
+        objectParams: {
+          Expires: 60,
+          ACL: 'public-read'
+        }
+      }
+    })
   }
 
   mockery.registerMock(configHelperModule, configHelperMock)
 
-  const scope = require(s3BucketParamsModule)
+  const scope = require('../lib/s3-bucket-params')
 
-  return scope.read().then((s) => t.deepEqual(config.objectParams, s.objectParams))
+  return scope.read('')
+    .then((s) => t.deepEqual(s.params, expected))
 })
