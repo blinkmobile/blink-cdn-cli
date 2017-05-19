@@ -39,6 +39,7 @@
     "flow-bin": "^0.46.0",
     "mockery": "^2.0.0",
     "npm-bin-ava-tester": "^1.1.0",
+    "nyc": "^10.3.2",
     "pify": "^2.3.0",
     "temp": "^0.8.3"
   },
@@ -72,10 +73,11 @@
     "url": "git+ssh://git@github.com/blinkmobile/client-cli.git"
   },
   "scripts": {
-    "ava": "ava",
+    "ava": "nyc ava",
     "eslint": "eslint --fix --cache .",
     "fixpack": "fixpack",
     "flow_check": "flow check",
+    "nyc": "nyc check-coverage",
     "posttest": "npm run eslint && npm run flow_check",
     "pretest": "npm run fixpack",
     "test": "npm run ava"

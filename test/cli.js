@@ -1,3 +1,4 @@
+/* @flow */
 'use strict'
 
 const npmBinTester = require('npm-bin-ava-tester')
