@@ -115,10 +115,10 @@ function makeTest (timerLabel, numFiles) {
   }
 }
 
-test('read 100 files from disk', makeTest('100Files', 100))
+test.serial('read 100 files from disk', makeTest('100Files', 100))
 
-test('read 500 files from disk', makeTest('500Files', 500))
+test.serial('read 500 files from disk', makeTest('500Files', 500))
 
-test('read 1000 files from disk', makeTest('1000Files', 1000))
+test.serial('read 1000 files from disk', makeTest('1000Files', 1000))
 
-test('read 2000 files from disk', makeTest('2000Files', 2000))
+test.serial('read 2000 files from disk', makeTest('2000Files', 2000))
