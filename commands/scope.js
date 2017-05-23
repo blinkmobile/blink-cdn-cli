@@ -1,22 +1,27 @@
-'use strict';
+/* @flow */
+'use strict'
 
-const scope = require('../lib/scope');
+const scope = require('../lib/scope')
 
-const REGION = 'ap-southeast-2';
+const REGION = 'ap-southeast-2'
 
-function write (bucketName, region) {
-  return scope.write({ scope: bucketName, region })
-    .catch((err) => {
-      console.error(err);
-      process.exit(1);
-    });
+function write (
+  cwd /* : string */,
+  bucketName /* : string */,
+  region /* : string */
+) /* : Promise<Object> */ {
+  return scope.write(cwd, { scope: bucketName, region })
 }
 
-module.exports = function (input, flags, options) {
-  let bucket = flags.bucket || input[0];
+module.exports = function (
+  input /* : string[] */,
+  flags /* : Object */
+) /* : Promise<void> */ {
+  let bucket = flags.bucket || input[0]
   if (bucket) {
-    return write(bucket, flags.region || REGION).then(scope.show);
+    return write(flags.cwd, bucket, flags.region || REGION)
+      .then((cfg) => scope.show(flags.cwd, cfg))
   }
 
-  scope.show();
-};
+  return scope.show(flags.cwd)
+}
