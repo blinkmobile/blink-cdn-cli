@@ -2,7 +2,7 @@
 
 This tool is for deploying client side code for web apps to the Blink Mobile CDN.
 
-See [usage.md](https://github.com/blinkmobile/client-cli/blob/develop/docs/usage.md) for detailed usage instructions.
+See [Usage](./docs/usage.md) for detailed usage instructions.
 
 ## Installation
 
