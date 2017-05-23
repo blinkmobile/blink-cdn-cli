@@ -18,18 +18,6 @@ test.afterEach(() => {
   mockery.disable()
 })
 
-test.serial('it should reject if scope cannot be found', (t) => {
-  const configHelperMock = {
-    read: () => Promise.reject(new Error())
-  }
-
-  mockery.registerMock(configHelperModule, configHelperMock)
-
-  const scope = require('../lib/s3-bucket-params')
-
-  return t.throws(scope.read(''), 'Scope has not been set yet, see --help for information on how to set scope.')
-})
-
 test.serial('it should return the stored params', (t) => {
   const config = {
     cdn: {
