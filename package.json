@@ -1,7 +1,7 @@
 {
   "name": "@blinkmobile/client-cli",
   "description": "CLI utility for BlinkMobile's Mobility Platform CDN",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "author": "Blink Mobile",
   "bin": {
     "blinkm-client": "./bin/index.js"

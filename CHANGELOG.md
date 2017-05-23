@@ -3,6 +3,9 @@
 
 ## Unreleased
 
+
+## 1.0.0 - 2017-05-23
+
 ### Added
 
 -   CC-20: Integrate bm-identity.js to allow for single login
