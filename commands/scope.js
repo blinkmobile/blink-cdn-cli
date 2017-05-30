@@ -20,7 +20,7 @@ module.exports = function (
   let bucket = flags.bucket || input[0]
   if (bucket) {
     return write(flags.cwd, bucket, flags.region || REGION)
-      .then((cfg) => scope.show(flags.cwd, cfg))
+      .then((cfg) => scope.show(flags.cwd))
   }
 
   return scope.show(flags.cwd)

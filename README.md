@@ -7,7 +7,7 @@ See [Usage](./docs/usage.md) for detailed usage instructions.
 ## Installation
 
 ```
-npm install -g @blinkmobile/cli @blinkmobile/client-cli
+npm install -g @blinkmobile/cli @blinkmobile/identity-cli @blinkmobile/client-cli
 ```
 
 ## Usage

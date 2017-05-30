@@ -24,6 +24,31 @@
 
 -   CC-20: dropped semistandard style in favor of standard style
 
+
+### Dependencies
+
+-   no longer depend upon [@blinkmobile/aws-profile-management](https://www.npmjs.com/package/@blinkmobile/aws-profile-management)
+
+-   update [@blinkmobile/aws-s3](https://www.npmjs.com/package/@blinkmobile/aws-s3) to [2.2.0](https://github.com/blinkmobile/aws-s3.js/blob/master/CHANGELOG.md) (from [
+2.1.0](https://github.com/blinkmobile/aws-s3.js/releases/tag/2.1.0))
+
+-   no longer depend upon [elegant-spinner](https://www.npmjs.com/package/elegant-spinner)
+
+-   no longer depend upon [log-update](https://www.npmjs.com/package/log-update)
+
+-   update [update-notifier](https://www.npmjs.com/package/update-notifier) to 2.1.0 (from 1.0.2)
+
+-   depend upon [@blinkmobile/bm-identity](https://www.npmjs.com/package/@blinkmobile/bm-identity) [2.3.4](https://github.com/blinkmobile/bm-identity.js/blob/master/CHANGELOG.md)
+
+-   depend upon [aws-sdk](https://www.npmjs.com/package/aws-sdk) [2.55.0](https://github.com/aws/aws-sdk-js/blob/master/CHANGELOG.md)
+
+-   depend upon [chalk](https://www.npmjs.com/package/chalk) 1.1.3
+
+-   depend upon [inquirer](https://www.npmjs.com/package/inquirer) 3.0.6
+
+-   depend upon [ora](https://www.npmjs.com/package/ora) 1.2.0
+
+
 ## 0.3.0 - 2016-10-31
 
 
