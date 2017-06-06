@@ -1,8 +1,6 @@
-# Client Side code deployment [![npm](https://img.shields.io/npm/v/@blinkmobile/client-cli.svg?maxAge=2592000)](https://www.npmjs.com/package/@blinkmobile/client-cli) [![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/blinkmobile/client-cli?branch=master&svg=true)](https://ci.appveyor.com/project/blinkmobile/client-cli) [![Travis CI Status](https://travis-ci.org/blinkmobile/client-cli.svg?branch=master)](https://travis-ci.org/blinkmobile/client-cli) [![Greenkeeper badge](https://badges.greenkeeper.io/blinkmobile/client-cli.svg)](https://greenkeeper.io/)
+# blinkmobile / client-cli  [![npm](https://img.shields.io/npm/v/@blinkmobile/client-cli.svg?maxAge=2592000)](https://www.npmjs.com/package/@blinkmobile/client-cli) [![AppVeyor Status](https://ci.appveyor.com/api/projects/status/github/blinkmobile/client-cli?branch=master&svg=true)](https://ci.appveyor.com/project/blinkmobile/client-cli) [![Travis CI Status](https://travis-ci.org/blinkmobile/client-cli.svg?branch=master)](https://travis-ci.org/blinkmobile/client-cli) [![Greenkeeper badge](https://badges.greenkeeper.io/blinkmobile/client-cli.svg)](https://greenkeeper.io/)
 
-This tool is for deploying client side code for web apps to the Blink Mobile CDN.
-
-See [Usage](./docs/usage.md) for detailed usage instructions.
+CLI to deploy client-side web applications with BlinkMobile.
 
 ## Installation
 
@@ -10,17 +8,26 @@ See [Usage](./docs/usage.md) for detailed usage instructions.
 npm install -g @blinkmobile/cli @blinkmobile/identity-cli @blinkmobile/client-cli
 ```
 
+## Documentation
+
+See the [Documentation](./docs/README.md) directory for more details.
+
 ## Usage
 
 ```sh
 blinkm client --help
 
 # or, shorter
-
 bm client --help
 ```
 
-```
+```sh
+Usage: blinkm client <command>
+
+Where command is one of:
+
+  scope, deploy
+
 Initial settings:
     scope                 => outputs the current scope
     scope <S3Bucket>      => sets the bucket
@@ -35,12 +42,13 @@ Deploying client side code:
   https://github.com/blinkmobile/identity-cli#usage
 
     deploy                => uploads files in the current working directory to the scoped bucket
+      <path>              => uploads files in <path> (relative to the --cwd flag) to the scoped bucket
       --env <environment> => optionally sets the environment to deploy to, defaults to 'dev'
       --force             => deploy without confirmation
       --skip              => bypass unchanged files (default)
       --no-skip           => upload all files, including unchanged
       --prune             => remove files that do not exist locally from the server
-      --cwd <path>        => uploads files in the <path> to the scoped bucket
+      --cwd <path>        => specify the directory containing .blinkmrc.json file (defaults to '.')
       --debug             => output debug information
 ```
 

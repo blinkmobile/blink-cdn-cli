@@ -6,6 +6,7 @@
 ### Added
 
 -   CC-37: `environment` parameter when assuming AWS role
+-   CC-37: `bm client deploy <path>` parameter to allow deploying files in a sub directory relative to the current working directory or `--cwd` flag if specified
 
 ### Changed
 
