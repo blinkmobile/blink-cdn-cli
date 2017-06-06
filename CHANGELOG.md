@@ -3,6 +3,9 @@
 
 ## Unreleased
 
+### Changed
+
+-   CC-37: CI node version from 6 and 7 to 6 and 8
 
 ## 1.0.0 - 2017-05-23
 
