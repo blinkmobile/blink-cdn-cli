@@ -3,6 +3,10 @@
 
 ## Unreleased
 
+### Added
+
+-   CC-37: `environment` parameter when assuming AWS role
+
 ### Changed
 
 -   CC-37: CI node version from 6 and 7 to 6 and 8
