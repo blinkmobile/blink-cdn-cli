@@ -1,17 +1,22 @@
-# Client Side code deployment
+# blinkmobile / client-cli
+
+# Client Side Code Deployment
 
 This tool is for deploying client side code for web apps to the Blink Mobile CDN.
 
-## Setting scope
+## Setting Scope
 
-`blinkm client scope <your bucket name>`
+```sh
+blinkm client scope <your bucket name>
+```
 
 `<your bucket name>` is supplied by Blink Mobile
 
-
 ## Scope Information
 
-`blinkm client scope`
+```sh
+blinkm client scope
+```
 
 Will tell you what your bucket name and region are currently set to.
 
@@ -20,7 +25,9 @@ Will tell you what your bucket name and region are currently set to.
 The deploy command requires a login to BlinkMobile before use.
 For help on the login and logout commands please see: [Identity CLI Usage](https://github.com/blinkmobile/identity-cli#usage)
 
-`blinkm client deploy --env <environment> --cwd <path-to-files>`
+```sh
+blinkm client deploy <path-to-files> --env <environment> --cwd <path-to-project>`
+```
 
 When uploading, the specified path will become the root folder in the CDN:
 
@@ -29,36 +36,37 @@ When uploading, the specified path will become the root folder in the CDN:
 Running:
 
 ```
-blinkm client deploy --cwd www
+blinkm client deploy www
 ```
 
 on a directory with the following:
 
 ```
-www/
-   + index.html
-   + js/
-       + app.js
-   + img/
-       + logo.png
-       + cta.jpg
-   + css/
-       + layout.css
-       + bootstrap.css
+|-- .blinkmrc.json
+|-- www
+|   |-- index.html
+|   |-- js
+|   |   |-- app.js
+|   |-- img
+|   |   |-- logo.png
+|   |   |-- cta.jpg
+|   |-- css
+|   |   |-- layout.css
+|   |   |-- bootstrap.css
 ```
 
-will deploy the following folder structure on the cdn:
+will deploy the following folder structure on the CDN:
 
 ```
-index.html
-js/
-  + app.js
-img/
-  + logo.png
-  + cta.jpg
-css/
-  + layout.css
-  + bootstrap.css
+|-- index.html
+|-- js
+|   |-- app.js
+|-- img
+|   |-- logo.png
+|   |-- cta.jpg
+|-- css
+|   |-- layout.css
+|   |-- bootstrap.css
 ```
 
 
@@ -66,4 +74,6 @@ css/
 
 Remove the files from your local folder, then deploy using `--prune`:
 
-`bm client deploy --env <environment> --cwd <path-to-files> --prune`
+```sh
+bm client deploy <path-to-files> --env <environment> --cwd <path-to-project> --prune
+```

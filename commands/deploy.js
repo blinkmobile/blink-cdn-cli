@@ -1,6 +1,8 @@
 /* @flow */
 'use strict'
 
+const path = require('path')
+
 const ora = require('ora')
 const chalk = require('chalk')
 const upload = require('@blinkmobile/aws-s3').upload
@@ -37,13 +39,14 @@ module.exports = function (
 
           const spinner = ora({spinner: 'dots', text: 'Uploading to CDN'})
 
-          return s3Factory(bucketDetails)
+          return s3Factory(bucketDetails, flags.env)
             .then((s3) => {
               const uploadParams = {
                 s3,
                 skip: flags.skip,
                 prune: flags.prune,
-                cwd: flags.cwd,
+                // Allow deployment of files in a sub directory to the current working directory
+                cwd: path.join(flags.cwd, (input[0] || '.')),
                 bucketPathPrefix: flags.env
               }
 

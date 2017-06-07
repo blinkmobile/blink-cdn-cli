@@ -35,7 +35,7 @@ test.serial('it should have the bucket name pre-configured', (t) => {
   mockery.registerMock(identityModule, bmIdentityMock)
 
   const s3Factory = require('../lib/s3-bucket-factory.js')
-  return s3Factory(params).then((s3) => t.truthy(s3.config.params.Bucket))
+  return s3Factory(params, 'dev').then((s3) => t.truthy(s3.config.params.Bucket))
 })
 
 test.serial('it should reject and stop the spinner if authentication fails', (t) => {
@@ -55,5 +55,5 @@ test.serial('it should reject and stop the spinner if authentication fails', (t)
   mockery.registerMock(identityModule, bmIdentityMock)
 
   const s3Factory = require('../lib/s3-bucket-factory.js')
-  return t.throws(s3Factory(params), 'test error')
+  return t.throws(s3Factory(params, 'dev'), 'test error')
 })
