@@ -3,6 +3,8 @@
 
 ## Unreleased
 
+## 1.1.0 - 2017-06-08
+
 ### Added
 
 -   CC-37: `environment` parameter when assuming AWS role
@@ -11,6 +13,17 @@
 ### Changed
 
 -   CC-37: CI node version from 6 and 7 to 6 and 8
+
+### Dependencies
+
+-   update [@blinkmobile/bm-identity](https://www.npmjs.com/package/@blinkmobile/bm-identity) to [2.3.5](https://github.com/blinkmobile/bm-identity.js/releases/tag/2.3.5) (from [2.3.4](https://github.com/blinkmobile/bm-identity.js/releases/tag/2.3.4))
+
+-   update [aws-sdk](https://www.npmjs.com/package/aws-sdk) to [2.65.0](https://github.com/aws/aws-sdk-js/releases/tag/v2.65.0) (from [2.55.0](https://github.com/aws/aws-sdk-js/releases/tag/v2.55.0))
+
+-   update [inquirer](https://www.npmjs.com/package/inquirer) to [3.1.0](https://github.com/SBoudrias/Inquirer.js/releases/tag/v3.1.0) (from [3.0.6](https://github.com/SBoudrias/Inquirer.js/releases/tag/v3.0.6))
+
+-   update [update-notifier](https://www.npmjs.com/package/update-notifier) to [2.2.0](https://github.com/yeoman/update-notifier/releases/tag/v2.2.0) (from 2.1.0)
+
 
 ## 1.0.0 - 2017-05-23
 
