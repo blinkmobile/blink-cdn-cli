@@ -4,6 +4,10 @@
 
 1.  [Usage](./usage.md)
 
+## More Information...
+
+-   [Client CLI Service](./client-cli-service.md)
+
 ## Breaking Changes
 
 -   [Migrating to `v1.x.x`](./migrate-to-v1.x.md)
