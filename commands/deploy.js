@@ -39,7 +39,7 @@ module.exports = function (
 
           const spinner = ora({spinner: 'dots', text: 'Uploading to CDN'})
 
-          return s3Factory(bucketDetails, flags.env)
+          return s3Factory(bucketDetails, flags.env, flags.cwd)
             .then((s3) => {
               const uploadParams = {
                 s3,

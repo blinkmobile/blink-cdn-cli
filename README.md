@@ -21,7 +21,7 @@ blinkm client --help
 bm client --help
 ```
 
-```sh
+```
 Usage: blinkm client <command>
 
 Where command is one of:

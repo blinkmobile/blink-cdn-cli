@@ -13,7 +13,10 @@ const MERGE_OPTIONS_PROJECT_PATH = path.join(__dirname, 'fixtures', 'merge-proje
 
 test('it should return the currently set scope', (t) => {
   return scope.read(EXISTING_PROJECT_PATH)
-    .then((s) => t.is(s.scope, 'customer-project.blinkm.io'))
+    .then((s) => {
+      t.is(s.scope, 'customer-project.blinkm.io')
+      t.is(s.service.origin, 'http://localhost')
+    })
 })
 
 test('it should log the currently set scope', (t) => {
