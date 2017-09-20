@@ -7,40 +7,44 @@ const ora = require('ora')
 const chalk = require('chalk')
 const upload = require('@blinkmobile/aws-s3').upload
 
+const pkg = require('../package.json')
+const BlinkMobileIdentity = require('@blinkmobile/bm-identity')
+const blinkMobileIdentity = new BlinkMobileIdentity(pkg.name)
+
 const confirm = require('../lib/utils/confirm.js')
 const bucketParams = require('../lib/s3-bucket-params.js')
+const provisionEnvironment = require('../lib/provision-environment.js')
+const getAwsCredentials = require('../lib/aws-credentials.js')
+const scope = require('../lib/scope.js')
+const getFQDN = require('../lib/utils/get-fqdn.js')
 
 const s3Factory = require('../lib/s3-bucket-factory.js')
-
-function getFQDN (
-  project /* : string */,
-  env /* : string */
-) /* : string */ {
-  if (env.toLowerCase() === 'prod') {
-    return project
-  }
-  const arr = project.split('.')
-  arr[0] += `-${env}`
-  return arr.join('.')
-}
 
 module.exports = function (
   input /* : string[] */,
   flags /* : Object */
 ) /* : Promise<void> */ {
-  return bucketParams.read(flags.cwd)
-    .then((bucketDetails) => {
-      const fqdn = getFQDN(bucketDetails.params.Bucket, flags.env)
-      return confirm(flags.force, flags.env)
-        .then((confirmation) => {
-          if (!confirmation) {
-            return
-          }
-
-          const spinner = ora({spinner: 'dots', text: 'Uploading to CDN'})
-
-          return s3Factory(bucketDetails, flags.env, flags.cwd)
+  return confirm(flags.force, flags.env)
+    .then((confirmation) => {
+      if (!confirmation) {
+        return
+      }
+      return Promise.all([
+        blinkMobileIdentity.getAccessToken(),
+        scope.read(flags.cwd)
+      ])
+        .then(([accessToken, cfg]) => {
+          return getAwsCredentials(cfg, flags.env, accessToken)
+            .then((awsCredentials) => {
+              return provisionEnvironment(cfg, flags.env, accessToken)
+                .then(() => awsCredentials)
+            })
+            .then((awsCredentials) => {
+              return bucketParams.read(flags.cwd)
+                .then((bucketDetails) => s3Factory(bucketDetails, awsCredentials))
+            })
             .then((s3) => {
+              const spinner = ora({spinner: 'dots', text: 'Uploading to CDN'})
               const uploadParams = {
                 s3,
                 skip: flags.skip,
@@ -62,13 +66,14 @@ module.exports = function (
                 spinner.warn(`deleted: ${fileName}`)
               })
               return task.promise
-            })
-            .then(() => {
-              spinner.succeed('Deployment complete - Origin: ' + chalk.bold(`https://${fqdn}`))
-            })
-            .catch((err) => {
-              spinner.fail('Deployment failed!')
-              return Promise.reject(err)
+                .then(() => {
+                  const fqdn = getFQDN(s3.config.params.Bucket, flags.env)
+                  spinner.succeed('Deployment complete - Origin: ' + chalk.bold(`https://${fqdn}`))
+                })
+                .catch((err) => {
+                  spinner.fail('Deployment failed!')
+                  return Promise.reject(err)
+                })
             })
         })
     })

@@ -6,6 +6,7 @@
 ### Added
 
 -   AUTH-77: call Client CLI Service to assume AWS Credentials
+-   AUTH-78: call Client CLI Service to provision Web App Hosting environment
 
 ## 1.1.0 - 2017-06-08
 
