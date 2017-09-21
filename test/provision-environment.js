@@ -36,6 +36,8 @@ test.serial('it should resolve', (t) => {
     post: function (url, options, cb) {
       cb(null, {
         statusCode: 200
+      }, {
+        brandedUrl: ''
       })
     }
   }

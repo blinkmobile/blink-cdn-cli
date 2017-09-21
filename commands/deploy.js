@@ -4,7 +4,6 @@
 const path = require('path')
 
 const ora = require('ora')
-const chalk = require('chalk')
 const upload = require('@blinkmobile/aws-s3').upload
 
 const pkg = require('../package.json')
@@ -16,7 +15,6 @@ const bucketParams = require('../lib/s3-bucket-params.js')
 const provisionEnvironment = require('../lib/provision-environment.js')
 const getAwsCredentials = require('../lib/aws-credentials.js')
 const scope = require('../lib/scope.js')
-const getFQDN = require('../lib/utils/get-fqdn.js')
 
 const s3Factory = require('../lib/s3-bucket-factory.js')
 
@@ -34,15 +32,11 @@ module.exports = function (
         scope.read(flags.cwd)
       ])
         .then(([accessToken, cfg]) => {
-          return getAwsCredentials(cfg, flags.env, accessToken)
-            .then((awsCredentials) => {
-              return provisionEnvironment(cfg, flags.env, accessToken)
-                .then(() => awsCredentials)
-            })
-            .then((awsCredentials) => {
-              return bucketParams.read(flags.cwd)
-                .then((bucketDetails) => s3Factory(bucketDetails, awsCredentials))
-            })
+          return Promise.all([
+            bucketParams.read(flags.cwd),
+            getAwsCredentials(cfg, flags.env, accessToken)
+          ])
+            .then((results) => s3Factory(...results))
             .then((s3) => {
               const spinner = ora({spinner: 'dots', text: 'Uploading to CDN'})
               const uploadParams = {
@@ -66,15 +60,12 @@ module.exports = function (
                 spinner.warn(`deleted: ${fileName}`)
               })
               return task.promise
-                .then(() => {
-                  const fqdn = getFQDN(s3.config.params.Bucket, flags.env)
-                  spinner.succeed('Deployment complete - Origin: ' + chalk.bold(`https://${fqdn}`))
-                })
                 .catch((err) => {
                   spinner.fail('Deployment failed!')
                   return Promise.reject(err)
                 })
             })
+            .then(() => provisionEnvironment(cfg, flags.env, accessToken))
         })
     })
 }
