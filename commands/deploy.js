@@ -4,43 +4,41 @@
 const path = require('path')
 
 const ora = require('ora')
-const chalk = require('chalk')
 const upload = require('@blinkmobile/aws-s3').upload
+
+const pkg = require('../package.json')
+const BlinkMobileIdentity = require('@blinkmobile/bm-identity')
+const blinkMobileIdentity = new BlinkMobileIdentity(pkg.name)
 
 const confirm = require('../lib/utils/confirm.js')
 const bucketParams = require('../lib/s3-bucket-params.js')
+const provisionEnvironment = require('../lib/provision-environment.js')
+const getAwsCredentials = require('../lib/aws-credentials.js')
+const scope = require('../lib/scope.js')
 
 const s3Factory = require('../lib/s3-bucket-factory.js')
-
-function getFQDN (
-  project /* : string */,
-  env /* : string */
-) /* : string */ {
-  if (env.toLowerCase() === 'prod') {
-    return project
-  }
-  const arr = project.split('.')
-  arr[0] += `-${env}`
-  return arr.join('.')
-}
 
 module.exports = function (
   input /* : string[] */,
   flags /* : Object */
 ) /* : Promise<void> */ {
-  return bucketParams.read(flags.cwd)
-    .then((bucketDetails) => {
-      const fqdn = getFQDN(bucketDetails.params.Bucket, flags.env)
-      return confirm(flags.force, flags.env)
-        .then((confirmation) => {
-          if (!confirmation) {
-            return
-          }
-
-          const spinner = ora({spinner: 'dots', text: 'Uploading to CDN'})
-
-          return s3Factory(bucketDetails, flags.env, flags.cwd)
+  return confirm(flags.force, flags.env)
+    .then((confirmation) => {
+      if (!confirmation) {
+        return
+      }
+      return Promise.all([
+        blinkMobileIdentity.getAccessToken(),
+        scope.read(flags.cwd)
+      ])
+        .then(([accessToken, cfg]) => {
+          return Promise.all([
+            bucketParams.read(flags.cwd),
+            getAwsCredentials(cfg, flags.env, accessToken)
+          ])
+            .then((results) => s3Factory(...results))
             .then((s3) => {
+              const spinner = ora({spinner: 'dots', text: 'Uploading to CDN'})
               const uploadParams = {
                 s3,
                 skip: flags.skip,
@@ -62,14 +60,12 @@ module.exports = function (
                 spinner.warn(`deleted: ${fileName}`)
               })
               return task.promise
+                .catch((err) => {
+                  spinner.fail('Deployment failed!')
+                  return Promise.reject(err)
+                })
             })
-            .then(() => {
-              spinner.succeed('Deployment complete - Origin: ' + chalk.bold(`https://${fqdn}`))
-            })
-            .catch((err) => {
-              spinner.fail('Deployment failed!')
-              return Promise.reject(err)
-            })
+            .then(() => provisionEnvironment(cfg, flags.env, accessToken))
         })
     })
 }
