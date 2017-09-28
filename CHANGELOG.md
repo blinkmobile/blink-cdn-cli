@@ -3,6 +3,8 @@
 
 ## Unreleased
 
+## 1.2.0 - 2017-09-29
+
 ### Added
 
 -   AUTH-77: call Client CLI Service to assume AWS Credentials
