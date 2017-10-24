@@ -20,7 +20,7 @@
     "@blinkmobile/blinkmrc": "1.1.0",
     "@blinkmobile/bm-identity": "3.1.0",
     "aws-sdk": "2.139.0",
-    "chalk": "2.2.0",
+    "chalk": "2.2.2",
     "inquirer": "3.3.0",
     "meow": "3.7.0",
     "object-merge": "2.5.1",
