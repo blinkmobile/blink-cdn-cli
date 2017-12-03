@@ -10,6 +10,21 @@
 -   AUTH-77: call Client CLI Service to assume AWS Credentials
 -   AUTH-78: call Client CLI Service to provision Web App Hosting environment
 
+### Dependencies
+
+-   update [@blinkmobile/bm-identity](https://www.npmjs.com/package/@blinkmobile/bm-identity) to [3.0.0](https://github.com/blinkmobile/bm-identity.js/releases/tag/3.0.0) (from [2.3.5](https://github.com/blinkmobile/bm-identity.js/releases/tag/2.3.5))
+
+-   update [aws-sdk](https://www.npmjs.com/package/aws-sdk) to [2.124.0](https://github.com/aws/aws-sdk-js/releases/tag/v2.124.0) (from [2.65.0](https://github.com/aws/aws-sdk-js/releases/tag/v2.65.0))
+
+-   update [chalk](https://www.npmjs.com/package/chalk) to 2.1.0 (from 1.1.3)
+
+-   update [inquirer](https://www.npmjs.com/package/inquirer) to [3.3.0](https://github.com/SBoudrias/Inquirer.js/releases/tag/v3.3.0) (from [3.1.0](https://github.com/SBoudrias/Inquirer.js/releases/tag/v3.1.0))
+
+-   update [ora](https://www.npmjs.com/package/ora) to 1.3.0 (from 1.2.0)
+
+-   depend upon [request](https://www.npmjs.com/package/request) [2.83.0](https://github.com/request/request/blob/master/CHANGELOG.md)
+
+
 ## 1.1.0 - 2017-06-08
 
 ### Added

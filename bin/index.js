@@ -23,27 +23,38 @@ const commands = {
 
 const cli = meow({
   help,
-  version: true
-}, {
-  boolean: [
-    'debug',
-    'force',
-    'prune',
-    'skip'
-  ],
-  default: {
-    debug: false,
-    cwd: process.cwd(),
-    force: false,
-    env: 'dev',
-    skip: true
-  },
-  string: [
-    'bucket',
-    'cwd',
-    'env',
-    'region'
-  ]
+  flags: {
+    'debug': {
+      type: 'boolean',
+      default: false
+    },
+    'force': {
+      type: 'boolean',
+      default: false
+    },
+    'prune': {
+      type: 'boolean',
+      default: false
+    },
+    'skip': {
+      type: 'boolean',
+      default: true
+    },
+    'bucket': {
+      type: 'string'
+    },
+    'cwd': {
+      type: 'string',
+      default: process.cwd()
+    },
+    'env': {
+      type: 'string',
+      default: 'dev'
+    },
+    'region': {
+      type: 'string'
+    }
+  }
 })
 
 const command = cli.input[0]
