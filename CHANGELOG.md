@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+-   `--no-provision` flag to `deploy` command to prevent the automatic provisioning of infrastructure after uploading files
+
 ## 1.3.0 - 2018-01-11
 
 ### Added
