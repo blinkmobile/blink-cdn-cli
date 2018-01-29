@@ -53,6 +53,10 @@ const cli = meow({
     },
     'region': {
       type: 'string'
+    },
+    'provision': {
+      type: 'boolean',
+      default: true
     }
   }
 })

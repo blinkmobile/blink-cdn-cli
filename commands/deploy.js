@@ -65,7 +65,7 @@ module.exports = function (
                   return Promise.reject(err)
                 })
             })
-            .then(() => provisionEnvironment(cfg, flags.env, accessToken))
+            .then(() => flags.provision && provisionEnvironment(cfg, flags.env, accessToken))
         })
     })
 }
