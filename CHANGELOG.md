@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## 1.3.1 - 2018-02-02
+
+### Dependencies
+
+-   update [@blinkmobile/bm-identity](https://www.npmjs.com/package/@blinkmobile/bm-identity) to [4.0.0](https://github.com/blinkmobile/bm-identity.js/blob/master/CHANGELOG.md) (from [3.2.0](https://github.com/blinkmobile/bm-identity.js/blob/master/CHANGELOG.md))
+
+-   update [aws-sdk](https://www.npmjs.com/package/aws-sdk) to [2.188.0](https://github.com/aws/aws-sdk-js/blob/master/CHANGELOG.md) (from [2.178.0](https://github.com/aws/aws-sdk-js/blob/master/CHANGELOG.md))
+
+-   update [inquirer](https://www.npmjs.com/package/inquirer) to 5.0.1 (from 5.0.0)
+
 ## 1.3.0 - 2018-01-11
 
 ### Added
