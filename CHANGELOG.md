@@ -2,6 +2,26 @@
 
 ## Unreleased
 
+## 1.3.2 - 2018-12-04
+
+### Dependencies
+
+-   update [@blinkmobile/blinkmrc](https://www.npmjs.com/package/@blinkmobile/blinkmrc) to [2.0.0](https://github.com/blinkmobile/blinkmrc.js/releases/tag/2.0.0) (from [1.1.0](https://github.com/blinkmobile/blinkmrc.js/releases/tag/1.1.0))
+
+-   update [@blinkmobile/bm-identity](https://www.npmjs.com/package/@blinkmobile/bm-identity) to [4.0.2](https://github.com/blinkmobile/bm-identity.js/releases/tag/4.0.2) (from [4.0.0](https://github.com/blinkmobile/bm-identity.js/releases/tag/4.0.0))
+
+-   update [aws-sdk](https://www.npmjs.com/package/aws-sdk) to [2.224.1](https://github.com/aws/aws-sdk-js/releases/tag/v2.224.1) (from [2.188.0](https://github.com/aws/aws-sdk-js/releases/tag/v2.188.0))
+
+-   update [chalk](https://www.npmjs.com/package/chalk) to [2.3.2](https://github.com/chalk/chalk/releases/tag/v2.3.2) (from [2.3.0](https://github.com/chalk/chalk/releases/tag/v2.3.0))
+
+-   update [inquirer](https://www.npmjs.com/package/inquirer) to [5.2.0](https://github.com/SBoudrias/Inquirer.js/releases/tag/v5.2.0) (from [5.0.1](https://github.com/SBoudrias/Inquirer.js/releases/tag/v5.0.1))
+
+-   update [ora](https://www.npmjs.com/package/ora) to [2.0.0](https://github.com/sindresorhus/ora/releases/tag/v2.0.0) (from 1.3.0)
+
+-   update [request](https://www.npmjs.com/package/request) to [2.85.0](https://github.com/request/request/blob/master/CHANGELOG.md) (from [2.83.0](https://github.com/request/request/blob/master/CHANGELOG.md))
+
+-   update [update-notifier](https://www.npmjs.com/package/update-notifier) to [2.5.0](https://github.com/yeoman/update-notifier/releases/tag/v2.5.0) (from 2.3.0)
+
 ## 1.3.1 - 2018-02-02
 
 ### Dependencies
