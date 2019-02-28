@@ -4,6 +4,7 @@
 
 This tool is for deploying client side code for web apps to the OneBlink Web App / CDN Hosting service.
 
+
 ## Setting Scope
 
 Before you deploy, you will need to set the scope for your project. The scope will specify where your project will be deployed to.
@@ -14,6 +15,7 @@ bm client scope <your web/cdn hosting url>
 
 `<your web/cdn hosting url>` is provided to you after you create the new Web App/CDN Hosting instance within the OneBlink Console.
 
+
 ## Scope Information
 
 ```sh
@@ -21,6 +23,7 @@ bm client scope
 ```
 
 Running the _scope_ command without specifying a URL will return the current scope.
+
 
 ## Deploying files
 
@@ -33,6 +36,7 @@ bm identity login
 
 If you haven't installed or used the Identity CLI before, please see: [Identity CLI Usage](https://github.com/blinkmobile/identity-cli#usage)
 
+
 ### Basic Deployment
 To deploy your code or assets, run the _deploy_ command:
 ```sh
@@ -41,6 +45,7 @@ bm client deploy
 This will upload the files in your current directory to a "dev" environment for your Web App/CDN Hosting.
 
 You can change the default behaviour by using additional options:
+
 
 ### Additional Options
 
@@ -68,6 +73,7 @@ For example:
 https://myorg-mywebapp.oneblink.io
 ```
 
+
 #### --cwd
 This option allows you to set your current working directory for deployment purposes.
 
@@ -77,11 +83,13 @@ bm client deploy --cwd ./www
 ```
 By default, your current directory will be used.
 
+
 #### --force
 This will deploy your project without asking for confirmation. This feature is designed to allow automatic deployments for those interested in an automated release.
 ```
 bm client deploy --force
 ```
+
 
 #### --skip
 The "skip" option will bypass unchanged files (default) on your local machine.
@@ -89,17 +97,20 @@ The "skip" option will bypass unchanged files (default) on your local machine.
 bm client deploy --skip
 ```
 
+
 #### --no-skip
 The "no-skip" option will upload all files, including unchanged files on your local machine.
 ```
 bm client deploy --no-skip
 ```
 
+
 #### --prune
 The "prune" option will remove any files from your hosting that don't exist on your local machine.
 ```
 bm client deploy --prune
 ```
+
 
 #### --debug
 The "debug" option will display extra debugging information. This is useful if you are having issues deploying your web app.
