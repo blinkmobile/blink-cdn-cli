@@ -18,7 +18,7 @@
   "dependencies": {
     "@blinkmobile/aws-s3": "2.2.0",
     "@blinkmobile/blinkmrc": "2.0.0",
-    "@blinkmobile/bm-identity": "4.0.2",
+    "@blinkmobile/bm-identity": "5.0.0",
     "aws-sdk": "2.224.1",
     "chalk": "2.3.2",
     "inquirer": "5.2.0",
@@ -79,8 +79,7 @@
     "fixpack": "fixpack",
     "flow_check": "flow check",
     "nyc": "nyc check-coverage",
-    "posttest": "npm run eslint && npm run flow_check",
-    "pretest": "npm run fixpack",
+    "pretest": "npm run fixpack && npm run eslint && npm run flow_check",
     "test": "npm run ava"
   }
 }
