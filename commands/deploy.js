@@ -6,9 +6,8 @@ const path = require('path')
 const ora = require('ora')
 const upload = require('@blinkmobile/aws-s3').upload
 
-const pkg = require('../package.json')
 const BlinkMobileIdentity = require('@blinkmobile/bm-identity')
-const blinkMobileIdentity = new BlinkMobileIdentity(pkg.name)
+const blinkMobileIdentity = new BlinkMobileIdentity()
 
 const confirm = require('../lib/utils/confirm.js')
 const bucketParams = require('../lib/s3-bucket-params.js')
