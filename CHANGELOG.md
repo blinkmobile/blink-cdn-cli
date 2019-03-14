@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.3.3 (2019-03-14)
+
 ### Dependencies
 
 -   update [@blinkmobile/bm-identity](https://www.npmjs.com/package/@blinkmobile/bm-identity) to [5.0.0](https://github.com/blinkmobile/bm-identity.js/releases/tag/5.0.0) (from [4.0.2](https://github.com/blinkmobile/bm-identity.js/releases/tag/4.0.2))
