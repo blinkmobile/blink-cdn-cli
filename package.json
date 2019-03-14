@@ -1,7 +1,7 @@
 {
   "name": "@blinkmobile/client-cli",
   "description": "CLI to deploy client-side web applications with BlinkMobile",
-  "version": "1.3.2",
+  "version": "1.3.3-beta.0",
   "author": "Blink Mobile",
   "bin": {
     "blinkm-client": "./bin/index.js"
