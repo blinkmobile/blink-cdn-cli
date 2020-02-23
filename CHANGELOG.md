@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.3.4 (2020-02-24)
+
 ### Fixed
 
 - default Client CLI Service origin
