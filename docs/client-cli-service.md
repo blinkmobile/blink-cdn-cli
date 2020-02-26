@@ -13,6 +13,7 @@ The HTTP origin that are used to access the Client CLI Service can be configured
 ```json
 {
   "cdn": {
+    "tenant": "oneblink" | "civicplus",
     "service": {
       "origin": "https://client-cli-service.blinkm.io"
     }
