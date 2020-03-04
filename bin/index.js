@@ -24,35 +24,32 @@ const commands = {
 const cli = meow({
   help,
   flags: {
-    'debug': {
+    debug: {
       type: 'boolean',
       default: false
     },
-    'force': {
+    force: {
       type: 'boolean',
       default: false
     },
-    'prune': {
+    prune: {
       type: 'boolean',
       default: false
     },
-    'skip': {
+    skip: {
       type: 'boolean',
       default: true
     },
-    'bucket': {
+    bucket: {
       type: 'string'
     },
-    'cwd': {
+    cwd: {
       type: 'string',
       default: process.cwd()
     },
-    'env': {
+    env: {
       type: 'string',
       default: 'dev'
-    },
-    'region': {
-      type: 'string'
     }
   }
 })
@@ -64,25 +61,28 @@ if (!command) {
 }
 
 if (!commands[command]) {
-  console.error(chalk.red(`
-Unknown command: ${command}`))
+  console.error(
+    chalk.red(`
+Unknown command: ${command}`)
+  )
   cli.showHelp(1)
 }
 
 if (typeof commands[command] !== 'function') {
-  console.error(chalk.red(`
-Command not implemented: ${command}`))
+  console.error(
+    chalk.red(`
+Command not implemented: ${command}`)
+  )
   cli.showHelp(1)
 }
 
-commands[command](cli.input.slice(1), cli.flags)
-  .catch((err) => {
-    console.log(`
+commands[command](cli.input.slice(1), cli.flags).catch(err => {
+  console.log(`
 There was a problem executing '${command}':
 
 ${chalk.red(cli.flags.debug && err && err.stack ? err.stack : err)}
 
 Please fix the error and try again.
 `)
-    process.exitCode = 1
-  })
+  process.exitCode = 1
+})
