@@ -1,16 +1,11 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "plugin:node/recommended",
-    "standard"
-  ],
+  "extends": ["eslint:recommended", "plugin:node/recommended", "standard"],
   "rules": {
     "no-console": 0,
-    "no-process-exit": 1 /* TODO: fix code and drop this exception */
+    "no-process-exit": 1 /* TODO: fix code and drop this exception */,
+    "space-before-function-paren": "off"
   },
-  "plugins": [
-    "node"
-  ],
+  "plugins": ["node"],
   "env": {
     "es6": true,
     "node": true
