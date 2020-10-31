@@ -22,7 +22,7 @@
     "aws-sdk": "2.224.1",
     "chalk": "2.3.2",
     "inquirer": "5.2.0",
-    "meow": "4.0.0",
+    "meow": "4.0.1",
     "object-merge": "2.5.1",
     "ora": "2.0.0",
     "request": "2.85.0",
