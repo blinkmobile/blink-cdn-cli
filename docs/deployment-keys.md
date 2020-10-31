@@ -4,7 +4,7 @@
 
 Deployment keys can using to do deployments instead of using a specific users credentials.
 
-To obtain a deployment key pair, please contact your BlinkM administrator(s)
+To obtain a deployment key pair, please contact OneBlink.
 
 ### Usage
 
